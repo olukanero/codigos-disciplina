@@ -1,0 +1,369 @@
+/* =========================================================
+   Design tokens · @lukanero · Os Códigos da Disciplina
+   Fonte única de cor, tipografia, espaço, forma, elevação,
+   estados e movimento. Toda página, slide, documento e carta
+   importa este arquivo e usa só estas variáveis.
+
+   Três camadas, como no Material Design:
+   1. Referência  · a paleta crua (--lk-onyx, --lk-crimson…).
+                    Não usar direto nas peças.
+   2. Sistema     · os papéis (--lk-surface, --lk-primary…).
+                    Mudam de valor entre o tema claro e o escuro.
+   3. Componente  · as medidas de cada peça (--lk-button-*,
+                    --lk-card-*…). Apontam para a camada 2.
+
+   Regras e uso de cada token: design_system_lukanero.md
+   Página visual: design_system_lukanero.html
+   Atualizado: 24/11/2026
+   ========================================================= */
+
+/* Fontes hospedadas junto com o site (pasta fonts/, ao lado deste arquivo).
+   Inter e Space Grotesk são variáveis: um arquivo cobre todos os pesos usados.
+   Lk Icones é um recorte da Material Symbols Rounded só com os ícones das páginas. */
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 400 900; font-display: swap; src: url("fonts/inter.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Space Grotesk"; font-style: normal; font-weight: 500 700; font-display: swap; src: url("fonts/space-grotesk.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Lk Icones"; font-style: normal; font-weight: 400; font-display: block; src: url("fonts/icones.woff2") format("woff2"); }
+
+:root {
+  /* =====================================================
+     CAMADA 1 · REFERÊNCIA (paleta)
+     ===================================================== */
+  --lk-onyx: #121212;
+  --lk-grafite: #1E1E1E;
+  --lk-carvao: #2A2A2A;
+  --lk-chumbo: #3A3A3A;
+  --lk-cinza-medio: #6B6B6B;
+  --lk-cinza-contorno: #8A8A8A;
+  --lk-cinza-prata: #9E9E9E;
+  --lk-claro: #E0E0E0;
+  --lk-nevoa: #F2F2F2;
+  --lk-snow: #FAFAFA;
+  --lk-papel: #FFFFFF;
+  --lk-crimson: #C41E3A;
+  --lk-crimson-escuro: #A8182F;
+  --lk-crimson-claro: #F2546A;
+  --lk-crimson-veu: #FAEDEF;
+
+  /* =====================================================
+     CAMADA 2 · SISTEMA
+     ===================================================== */
+
+  /* ---------- Cor · tema claro (padrão) ---------- */
+  --lk-surface: var(--lk-snow);
+  --lk-surface-lowest: var(--lk-papel);
+  --lk-surface-container: var(--lk-nevoa);
+  --lk-surface-high: var(--lk-claro);
+  --lk-on-surface: var(--lk-onyx);
+  --lk-on-surface-variant: var(--lk-chumbo);
+  --lk-on-surface-muted: var(--lk-cinza-medio);
+  --lk-outline: var(--lk-cinza-contorno);
+  --lk-outline-variant: var(--lk-claro);
+
+  --lk-primary: var(--lk-crimson);
+  --lk-primary-hover: var(--lk-crimson-escuro);
+  --lk-on-primary: var(--lk-snow);
+  --lk-primary-container: var(--lk-crimson-veu);
+  --lk-on-primary-container: var(--lk-crimson-escuro);
+  --lk-accent-text: var(--lk-crimson);
+
+  --lk-inverse-surface: var(--lk-onyx);
+  --lk-inverse-on-surface: var(--lk-snow);
+  --lk-inverse-primary: var(--lk-crimson-claro);
+  --lk-scrim: rgba(18, 18, 18, 0.6);
+  --lk-focus: var(--lk-crimson);
+
+  /* erro: ver o bloco "Apelidos" no fim do arquivo */
+
+  /* ---------- Tipografia ---------- */
+  --lk-font-title: "Space Grotesk", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  --lk-font-text: "Inter", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+
+  /* escala da tela: peso tamanho/altura da linha (múltiplos de 4) */
+  --lk-display-l: 700 80px/80px var(--lk-font-title);
+  --lk-display-m: 700 64px/64px var(--lk-font-title);
+  --lk-display-s: 700 48px/52px var(--lk-font-title);
+  --lk-headline-l: 700 40px/44px var(--lk-font-title);
+  --lk-headline-m: 700 32px/40px var(--lk-font-title);
+  --lk-headline-s: 700 24px/32px var(--lk-font-title);
+  --lk-title-l: 700 20px/28px var(--lk-font-title);
+  --lk-title-m: 700 16px/24px var(--lk-font-title);
+  --lk-title-s: 700 14px/20px var(--lk-font-title);
+  --lk-body-l: 400 16px/24px var(--lk-font-text);
+  --lk-body-m: 400 14px/20px var(--lk-font-text);
+  --lk-body-s: 400 12px/16px var(--lk-font-text);
+  --lk-label-l: 600 16px/20px var(--lk-font-text);
+  --lk-label-m: 700 12px/16px var(--lk-font-title);
+  --lk-label-s: 500 12px/16px var(--lk-font-title);
+  --lk-name: 900 40px/44px var(--lk-font-text);
+
+  /* título do topo da página: Inter 900 em caixa alta, muda sozinho com a largura */
+  --lk-hero: 900 44px/48px var(--lk-font-text);
+
+  --lk-tracking-tight: -0.02em;
+  --lk-tracking-normal: 0;
+  --lk-tracking-caps: 0.08em;
+
+  /* ---------- Espaço (grade de 4px) ---------- */
+  --lk-space-0: 0;
+  --lk-space-1: 4px;
+  --lk-space-2: 8px;
+  --lk-space-3: 12px;
+  --lk-space-4: 16px;
+  --lk-space-5: 20px;
+  --lk-space-6: 24px;
+  --lk-space-8: 32px;
+  --lk-space-10: 40px;
+  --lk-space-12: 48px;
+  --lk-space-16: 64px;
+  --lk-space-20: 80px;
+  --lk-space-32: 128px;
+  --lk-space-40: 160px;
+
+  /* ---------- Layout ---------- */
+  --lk-container: 1080px;
+  --lk-container-text: 720px;
+  --lk-gutter: 16px;
+  --lk-section-y: 48px;
+  --lk-touch: 48px;
+
+  /* ---------- Forma ---------- */
+  --lk-radius-none: 0;
+  --lk-radius-xs: 4px;
+  --lk-radius-sm: 8px;
+  --lk-radius-md: 12px;
+  --lk-radius-lg: 16px;
+  --lk-radius-xl: 24px;
+  --lk-radius-full: 9999px;
+  --lk-border: 1px;
+  --lk-border-strong: 2px;
+
+  /* ---------- Elevação ---------- */
+  --lk-elevation-0: none;
+  --lk-elevation-1: 0 1px 2px rgba(18, 18, 18, 0.04), 0 4px 16px rgba(18, 18, 18, 0.06);
+  --lk-elevation-2: 0 2px 4px rgba(18, 18, 18, 0.06), 0 8px 24px rgba(18, 18, 18, 0.10);
+  --lk-elevation-3: 0 4px 8px rgba(18, 18, 18, 0.10), 0 12px 28px rgba(18, 18, 18, 0.14);
+  --lk-glow-primary: 0 8px 24px rgba(196, 30, 58, 0.35);
+  --lk-glow-primary-hover: 0 10px 32px rgba(196, 30, 58, 0.5);
+
+  /* ---------- Estados (camada de estado, como no Material) ----------
+     Uma película da cor do conteúdo por cima do fundo do elemento.
+     Uso: background: color-mix(in srgb, currentColor var(--lk-state-hover), transparent); */
+  --lk-state-hover: 8%;
+  --lk-state-focus: 10%;
+  --lk-state-pressed: 10%;
+  --lk-state-dragged: 16%;
+  --lk-state-disabled-content: 0.38;
+  --lk-state-disabled-container: 0.12;
+
+  --lk-focus-width: 2px;
+  --lk-focus-offset: 2px;
+
+  /* ---------- Movimento ---------- */
+  --lk-duration-short: 100ms;
+  --lk-duration-medium: 200ms;
+  --lk-duration-long: 300ms;
+  --lk-duration-xlong: 500ms;
+  --lk-ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --lk-ease-decelerate: cubic-bezier(0, 0, 0, 1);
+  --lk-ease-accelerate: cubic-bezier(0.3, 0, 1, 1);
+  --lk-ease-emphasized-in: cubic-bezier(0.05, 0.7, 0.1, 1);
+  --lk-ease-emphasized-out: cubic-bezier(0.3, 0, 0.8, 0.15);
+
+  /* ---------- Camadas (z-index) ---------- */
+  --lk-z-sticky: 10;
+  --lk-z-topbar: 20;
+  --lk-z-dialog: 100;
+  --lk-z-snackbar: 200;
+
+  /* =====================================================
+     CAMADA 3 · COMPONENTE
+     ===================================================== */
+
+  /* Ícone */
+  --lk-icon-xs: 16px;
+  --lk-icon-s: 20px;
+  --lk-icon-m: 24px;
+  --lk-icon-l: 48px;
+  --lk-icon-xl: 64px;
+  --lk-icon-hero: 96px;
+  --lk-icon-stroke: 2;
+
+  /* Kicker (a cor está no bloco "Apelidos") */
+  --lk-kicker-font: var(--lk-label-m);
+  --lk-kicker-gap: var(--lk-space-2);
+
+  /* Botão */
+  --lk-button-height: 48px;
+  --lk-button-height-l: 56px;
+  --lk-button-padding-x: var(--lk-space-4);
+  --lk-button-radius: var(--lk-radius-md);
+  --lk-button-font: var(--lk-label-l);
+  --lk-button-min-width: 240px;
+  --lk-button-icon-gap: var(--lk-space-2);
+
+  /* Card */
+  --lk-card-radius: var(--lk-radius-lg);
+  --lk-card-padding: var(--lk-space-5);
+  --lk-card-gap: var(--lk-space-4);
+
+  /* Campo */
+  --lk-field-height: 48px;
+  --lk-field-radius: var(--lk-radius-md);
+  --lk-field-padding-x: var(--lk-space-4);
+
+  /* Tag e chip */
+  --lk-tag-height: 24px;
+  --lk-chip-height: 32px;
+  --lk-chip-radius: var(--lk-radius-sm);
+  --lk-chip-padding-x: var(--lk-space-3);
+
+  /* Avatar */
+  --lk-avatar-s: 32px;
+  --lk-avatar-m: 48px;
+  --lk-avatar-l: 96px;
+
+  /* Conversa */
+  --lk-bubble-radius: var(--lk-radius-md);
+  --lk-bubble-corner: var(--lk-radius-xs);
+  --lk-bubble-max: 85%;
+
+  /* Topo da página (foto de fundo) · o único lugar com texto sobre foto.
+     O véu escurece o lado do texto: a base no celular, a esquerda no computador. */
+  --lk-hero-veil-mobile: linear-gradient(0deg, rgba(18, 18, 18, 0.96) 0%, rgba(18, 18, 18, 0.88) 50%, rgba(18, 18, 18, 0.2) 80%, rgba(18, 18, 18, 0) 100%);
+  --lk-hero-veil-wide: linear-gradient(90deg, rgba(18, 18, 18, 0.94) 0%, rgba(18, 18, 18, 0.82) 42%, rgba(18, 18, 18, 0) 72%);
+
+  /* Barra do topo */
+  --lk-topbar-height: 64px;
+
+  /* Janela e aviso */
+  --lk-dialog-radius: var(--lk-radius-xl);
+  --lk-dialog-max: 560px;
+  --lk-dialog-padding: var(--lk-space-6);
+  --lk-snackbar-radius: var(--lk-radius-md);
+  --lk-snackbar-max: 560px;
+  --lk-snackbar-duration: 4000ms;
+
+  /* Barra de progresso */
+  --lk-progress-height: 4px;
+  --lk-progress-height-print: 10px;
+
+  /* Selo da garantia */
+  --lk-seal-size: 120px;
+}
+
+/* ---------- Tema escuro ---------- */
+[data-theme="dark"],
+.lk-dark {
+  --lk-surface: var(--lk-onyx);
+  --lk-surface-lowest: var(--lk-onyx);
+  --lk-surface-container: var(--lk-grafite);
+  --lk-surface-high: var(--lk-carvao);
+  --lk-on-surface: var(--lk-snow);
+  --lk-on-surface-variant: var(--lk-claro);
+  --lk-on-surface-muted: var(--lk-cinza-prata);
+  --lk-outline: var(--lk-cinza-medio);
+  --lk-outline-variant: var(--lk-chumbo);
+
+  --lk-primary: var(--lk-crimson);
+  --lk-primary-hover: var(--lk-crimson-escuro);
+  --lk-on-primary: var(--lk-snow);
+  --lk-primary-container: var(--lk-grafite);
+  --lk-on-primary-container: var(--lk-crimson-claro);
+  --lk-accent-text: var(--lk-crimson-claro);
+
+  --lk-inverse-surface: var(--lk-snow);
+  --lk-inverse-on-surface: var(--lk-onyx);
+  --lk-inverse-primary: var(--lk-crimson);
+  --lk-focus: var(--lk-crimson-claro);
+}
+
+/* ---------- Tema claro dentro de uma área escura ----------
+   O claro já é o padrão do :root. Este bloco só existe para uma
+   seção clara no meio de uma página escura. */
+[data-theme="light"],
+.lk-light {
+  --lk-surface: var(--lk-snow);
+  --lk-surface-lowest: var(--lk-papel);
+  --lk-surface-container: var(--lk-nevoa);
+  --lk-surface-high: var(--lk-claro);
+  --lk-on-surface: var(--lk-onyx);
+  --lk-on-surface-variant: var(--lk-chumbo);
+  --lk-on-surface-muted: var(--lk-cinza-medio);
+  --lk-outline: var(--lk-cinza-contorno);
+  --lk-outline-variant: var(--lk-claro);
+
+  --lk-primary: var(--lk-crimson);
+  --lk-primary-hover: var(--lk-crimson-escuro);
+  --lk-on-primary: var(--lk-snow);
+  --lk-primary-container: var(--lk-crimson-veu);
+  --lk-on-primary-container: var(--lk-crimson-escuro);
+  --lk-accent-text: var(--lk-crimson);
+
+  --lk-inverse-surface: var(--lk-onyx);
+  --lk-inverse-on-surface: var(--lk-snow);
+  --lk-inverse-primary: var(--lk-crimson-claro);
+  --lk-focus: var(--lk-crimson);
+}
+
+/* ---------- Apelidos de cor ----------
+   Tokens que apontam para um papel de cor. Ficam declarados em
+   cada escopo de tema para que uma seção .lk-dark no meio de uma
+   página clara pegue o valor do escuro (uma variável que aponta
+   para outra é resolvida onde é declarada). */
+:root,
+[data-theme="dark"],
+.lk-dark,
+[data-theme="light"],
+.lk-light {
+  /* erro usa o próprio vermelho da marca, sempre com ícone e frase */
+  --lk-error: var(--lk-primary);
+  --lk-on-error: var(--lk-on-primary);
+  --lk-error-container: var(--lk-primary-container);
+  --lk-on-error-container: var(--lk-on-primary-container);
+  --lk-kicker-color: var(--lk-accent-text);
+}
+
+/* ---------- Áreas de tema ----------
+   Uma área que troca de tema também troca a cor do texto, senão
+   ela herda a cor do tema de fora. O fundo fica por conta da peça. */
+.lk-dark,
+.lk-light,
+[data-theme] {
+  color: var(--lk-on-surface);
+}
+
+/* ---------- Telas médias e grandes ---------- */
+@media (min-width: 600px) {
+  :root {
+    --lk-gutter: 24px;
+    --lk-button-padding-x: var(--lk-space-6);
+    --lk-card-padding: var(--lk-space-6);
+    --lk-hero: 900 64px/64px var(--lk-font-text);
+  }
+}
+@media (min-width: 840px) {
+  :root {
+    --lk-section-y: 80px;
+  }
+}
+
+/* ---------- Movimento reduzido ---------- */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --lk-duration-short: 0ms;
+    --lk-duration-medium: 0ms;
+    --lk-duration-long: 0ms;
+    --lk-duration-xlong: 0ms;
+  }
+}
+
+/* ---------- Impresso ---------- */
+@media print {
+  :root {
+    --lk-elevation-1: none;
+    --lk-elevation-2: none;
+    --lk-elevation-3: none;
+    --lk-glow-primary: none;
+    --lk-glow-primary-hover: none;
+  }
+}

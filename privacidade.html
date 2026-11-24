@@ -1,135 +1,183 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Política de Privacidade · Os Códigos da Disciplina</title>
-<meta name="description" content="Política de privacidade do curso Os Códigos da Disciplina.">
-<meta name="robots" content="noindex">
-<meta name="theme-color" content="#121212">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Política de privacidade · Os Códigos da Disciplina</title>
+<meta name="description" content="Como Os Códigos da Disciplina coleta, usa e protege os seus dados, conforme a LGPD.">
+<meta name="theme-color" content="#FAFAFA">
+<link rel="stylesheet" href="design_tokens.css">
+<link rel="icon" href="img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="preload" href="fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/space-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/icones.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/inter-latin-400-normal.woff2) format('woff2')}
-@font-face{font-family:'Inter';font-style:normal;font-weight:500;font-display:swap;src:url(fonts/inter-latin-500-normal.woff2) format('woff2')}
-@font-face{font-family:'Inter';font-style:normal;font-weight:700;font-display:swap;src:url(fonts/inter-latin-700-normal.woff2) format('woff2')}
-@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:700;font-display:swap;src:url(fonts/space-grotesk-latin-700-normal.woff2) format('woff2')}
-:root{--red:#C41E3A;--ink:#121212;--grey:#3A3A3A;--light:#E0E0E0;--snow:#FAFAFA;
-  --f-text:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;--f-title:'Space Grotesk',system-ui,-apple-system,'Segoe UI',sans-serif;
-  --narrow:720px;--gutter:20px;--section-y:48px}
-@media (min-width:1025px){:root{--section-y:80px}}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{-webkit-text-size-adjust:100%}
-body{font-family:var(--f-text);background:var(--snow);color:var(--ink);-webkit-font-smoothing:antialiased}
-.wrap{max-width:var(--narrow);margin:0 auto;padding:0 var(--gutter)}
-.top{background:var(--ink)}
-.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px}
-.top__brand{font-family:var(--f-title);font-weight:700;font-size:16px;line-height:20px;color:var(--snow);text-decoration:none}
-.top__back{font-family:var(--f-text);font-weight:500;font-size:14px;line-height:20px;color:var(--light);text-decoration:none}
-.top__back:hover{color:var(--snow)}
-.top__brand,.top__back{white-space:nowrap}
-@media (max-width:480px){.hide-sm{display:none}}
-.doc{padding:var(--section-y) 0}
-.eyebrow{display:block;font-family:var(--f-title);font-weight:700;font-size:16px;line-height:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--red)}
-h1{margin-top:8px;font-family:var(--f-title);font-weight:700;font-size:32px;line-height:36px;color:var(--ink)}
-.updated{margin-top:8px;font-weight:500;font-size:14px;line-height:20px;color:var(--grey)}
-.note{margin-top:24px;padding:16px;border:1px solid var(--light);border-radius:16px;background:#fff;font-size:14px;line-height:20px;color:var(--grey)}
-h2{margin-top:32px;font-family:var(--f-title);font-weight:700;font-size:20px;line-height:24px;color:var(--ink)}
-p,li{font-weight:400;font-size:16px;line-height:24px;color:var(--grey)}
-h2 + p,h2 + ul{margin-top:8px}
-p + p,p + ul,ul + p{margin-top:12px}
-ul{padding-left:20px}
-li + li{margin-top:4px}
-b{font-weight:700;color:var(--ink)}
-a{color:var(--red)}
-.fill{background:#FDE7EA;color:var(--red);font-weight:700;border-radius:4px;padding:0 4px}
-.footer{padding:32px 0;background:var(--ink);text-align:center;font-weight:500;font-size:12px;line-height:16px;color:var(--light)}
-.footer a{color:var(--snow)}
-.footer a:hover{color:var(--red)}
+  /* =========================================================
+     Página legal · Os Códigos da Disciplina
+     Gerada a partir de 02.funil/04.outras. Usa só os tokens.
+     Formato: design_system_lukanero.md, seção Formatos
+     ========================================================= */
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--lk-surface); color: var(--lk-on-surface); font: var(--lk-body-l); -webkit-font-smoothing: antialiased; }
+  h1, h2, p, ul { margin: 0; }
+  a { color: var(--lk-accent-text); text-underline-offset: 2px; }
+  b { font-weight: 600; color: var(--lk-on-surface); }
+  :focus-visible { outline: var(--lk-focus-width) solid var(--lk-focus); outline-offset: var(--lk-focus-offset); }
+  .ms { font-family: "Lk Icones"; font-weight: normal; font-style: normal; font-size: var(--lk-icon-s); line-height: 1; display: inline-block; white-space: nowrap; -webkit-font-feature-settings: "liga"; font-feature-settings: "liga"; }
+  .wrap { max-width: calc(var(--lk-container-text) + 2 * var(--lk-gutter)); margin: 0 auto; padding: 0 var(--lk-gutter); }
+
+  /* topo */
+  .legal-top { padding: var(--lk-space-6) 0 var(--lk-space-10); border-bottom: var(--lk-border) solid var(--lk-outline-variant); }
+  .back { position: relative; display: inline-flex; align-items: center; gap: var(--lk-space-2); min-height: var(--lk-touch); padding: 0 var(--lk-space-3); margin-left: calc(-1 * var(--lk-space-3)); border-radius: var(--lk-radius-md); font: var(--lk-label-l); color: var(--lk-on-surface-variant); text-decoration: none; }
+  .back:hover { background: color-mix(in srgb, var(--lk-on-surface) var(--lk-state-hover), transparent); color: var(--lk-on-surface); }
+  .legal-head { text-align: center; margin-top: var(--lk-space-10); }
+  .kicker { display: inline-block; font: var(--lk-kicker-font); letter-spacing: var(--lk-tracking-caps); text-transform: uppercase; color: var(--lk-kicker-color); margin-bottom: var(--lk-kicker-gap); }
+  h1 { font: var(--lk-headline-m); letter-spacing: var(--lk-tracking-tight); }
+  .date { margin-top: var(--lk-space-3); font: var(--lk-body-m); color: var(--lk-on-surface-muted); }
+  @media (min-width: 840px) { h1 { font: var(--lk-headline-l); letter-spacing: var(--lk-tracking-tight); } }
+
+  /* corpo */
+  /* main.wrap: a classe .wrap zeraria o espaço de cima e de baixo */
+  main.wrap { padding-top: var(--lk-space-4); padding-bottom: var(--lk-section-y); }
+  .legal-sec { padding-top: var(--lk-space-8); scroll-margin-top: var(--lk-space-6); }
+  .legal-sec h2 { display: flex; align-items: baseline; gap: var(--lk-space-3); font: var(--lk-title-l); margin-bottom: var(--lk-space-3); }
+  .legal-sec h2 .num { font: var(--lk-label-m); letter-spacing: var(--lk-tracking-caps); color: var(--lk-accent-text); flex: none; }
+  .legal-sec p, .legal-sec li { color: var(--lk-on-surface-variant); }
+  .legal-sec p + p, .legal-sec ul + p, .legal-sec p + ul { margin-top: var(--lk-space-3); }
+  .legal-sec ul { padding: 0; list-style: none; display: grid; gap: var(--lk-space-2); }
+  .legal-sec li { display: flex; gap: var(--lk-space-3); }
+  .legal-sec li::before { content: ""; flex: none; width: 6px; height: 6px; border-radius: 50%; background: var(--lk-primary); margin-top: 9px; }
+  .legal-sec a { overflow-wrap: anywhere; }
+  .todo { background: var(--lk-primary-container); color: var(--lk-on-primary-container); font-weight: 600; padding: 0 4px; border-radius: var(--lk-radius-xs); }
+
+  /* rodapé */
+  .footer { padding: var(--lk-space-8) 0 calc(var(--lk-space-8) + env(safe-area-inset-bottom)); background: var(--lk-surface); font: var(--lk-body-s); color: var(--lk-on-surface-muted); text-align: center; }
+  .footer a { color: inherit; }
 </style>
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '2618686061904510');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=2618686061904510&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
 </head>
 <body>
-<header class="top"><div class="wrap"><a class="top__brand" href="index.html">Os Códigos da Disciplina</a><a class="top__back" href="index.html">← Voltar<span class="hide-sm"> para a página</span></a></div></header>
-<main class="doc"><div class="wrap">
-<span class="eyebrow">Documento legal</span>
-<h1>Política de Privacidade</h1>
-<p class="updated">Última atualização: 16 de novembro de 2026</p>
-<!-- ANTES DE PUBLICAR: preencha todos os campos destacados em vermelho e apague esta nota. -->
-<p class="note">Os campos destacados em vermelho precisam ser preenchidos antes de publicar.</p>
 
-<h2>1. Quem cuida dos seus dados</h2>
-<p>O responsável pelo tratamento dos seus dados pessoais (controlador) é <mark class="fill">[NOME COMPLETO OU RAZÃO SOCIAL]</mark>, inscrito sob o <mark class="fill">[CPF OU CNPJ]</mark>. O contato para qualquer assunto sobre privacidade é <a href="mailto:olukanero@gmail.com">olukanero@gmail.com</a>.</p>
-<p>Esta política segue a Lei Geral de Proteção de Dados (Lei 13.709/2018).</p>
+<header class="legal-top">
+  <div class="wrap">
+    <a class="back" href="index.html"><span class="ms" aria-hidden="true">arrow_back</span>Voltar para a página</a>
+    <div class="legal-head">
+      <span class="kicker">Documento legal</span>
+      <h1>Política de Privacidade</h1>
+      <p class="date">Última atualização: 24/11/2026</p>
+    </div>
+  </div>
+</header>
 
-<h2>2. Quais dados coletamos</h2>
-<p><b>Quando você visita a página:</b> dados de navegação, como endereço IP, tipo de aparelho e navegador, páginas vistas e origem da visita, coletados por cookies e ferramentas de medição.</p>
-<p><b>As perguntas que você marca no começo da página</b> ("Quantas vezes você já começou o mesmo hábito?") ficam só no seu navegador. Elas não são enviadas nem guardadas por nós.</p>
-<p><b>As respostas do Diagnóstico dos Sabotadores</b> (lukanero.com.br/diagnostico) também ficam salvas só no seu navegador. Elas não são enviadas para nenhum servidor nem guardadas por nós, e você pode apagar tudo a qualquer momento no botão Recomeçar. Quando você chega ao resultado, o Meta Pixel registra só que o diagnóstico foi concluído, sem as suas respostas.</p>
-<p><b>Quando você compra:</b> nome, e-mail, CPF, telefone e dados de pagamento. Esses dados são coletados diretamente pela HeroSpark. Nós não temos acesso ao número do seu cartão.</p>
-<p><b>Quando você usa o curso:</b> os dados de acesso à área de membros e, se você nos escrever, o conteúdo das suas mensagens.</p>
+<main class="wrap">
+    <section class="legal-sec" aria-labelledby="s1">
+      <h2 id="s1"><span class="num">01</span>Quem cuida dos seus dados</h2>
+      <p>O responsável pelo tratamento dos seus dados pessoais (controlador) é <mark class="todo">[NOME COMPLETO OU RAZÃO SOCIAL]</mark>, inscrito sob o <mark class="todo">[CPF OU CNPJ]</mark>. O contato para qualquer assunto sobre privacidade é <a href="mailto:olukanero@gmail.com">olukanero@gmail.com</a>.</p>
+      <p>Esta política segue a Lei Geral de Proteção de Dados (Lei 13.709/2018).</p>
+    </section>
 
-<h2>3. Para que usamos os dados</h2>
-<ul>
-  <li>Liberar o acesso ao curso e aos bônus, e enviar as informações da compra (execução do contrato).</li>
-  <li>Cumprir obrigações fiscais e legais (obrigação legal).</li>
-  <li>Responder dúvidas, pedidos de suporte e de reembolso (execução do contrato).</li>
-  <li>Medir o desempenho da página e dos anúncios, e melhorar a comunicação (legítimo interesse ou consentimento, conforme a ferramenta).</li>
-  <li>Enviar conteúdos e ofertas por e-mail, só se você autorizar. Você pode cancelar a qualquer momento pelo link no próprio e-mail.</li>
-</ul>
+    <section class="legal-sec" aria-labelledby="s2">
+      <h2 id="s2"><span class="num">02</span>Quais dados coletamos</h2>
+      <p><b>Quando você visita a página:</b> dados de navegação, como endereço IP, tipo de aparelho e navegador, páginas vistas e origem da visita, coletados por cookies e ferramentas de medição.</p>
+      <p><b>As perguntas que você marca no começo da página</b> (“Quantas vezes você já começou o mesmo hábito?”) ficam só no seu navegador. Elas não são enviadas nem guardadas por nós.</p>
+      <p><b>Quando você comenta ou manda mensagem para o @lukanero com SABOTADOR ou DISCIPLINA:</b> o seu nome de usuário do Instagram, as mensagens trocadas na automação, os botões que você toca e, se você responder, qual Sabotador deu no diagnóstico. Esses dados ficam no ManyChat, a ferramenta que faz as respostas automáticas.</p>
+      <p><b>No Diagnóstico dos Sabotadores</b> (<a href="https://lukanero.com.br/diagnostico">https://lukanero.com.br/diagnostico</a>):</p>
+      <ul>
+        <li><span>As suas respostas ficam salvas no seu navegador, para você continuar de onde parou.</span></li>
+        <li><span>Antes do resultado, pedimos o seu e-mail. Ele é guardado na Brevo, a nossa ferramenta de envio de e-mail, junto com o seu resultado: o Sabotador, o segundo padrão mais forte, a rota, o hábito que você escreveu, de onde você chegou ao diagnóstico (por exemplo, o Instagram) e a data.</span></li>
+        <li><span>Quando você envia o e-mail, o Meta Pixel registra que o diagnóstico foi concluído, sem as suas respostas.</span></li>
+      </ul>
+      <p><b>Quando você compra:</b> nome, e-mail, CPF, telefone e dados de pagamento. Esses dados são coletados diretamente pela Cakto, a plataforma de pagamento do curso, conforme a política de privacidade dela. Nós recebemos os dados da compra, mas não temos acesso ao número do seu cartão.</p>
+      <p><b>Quando você usa o curso:</b> os dados de acesso e de progresso na área de membros, que também fica na Cakto, os comentários que você deixa nas aulas e, se você nos escrever, o conteúdo das suas mensagens.</p>
+    </section>
 
-<h2>4. Cookies e ferramentas de terceiros</h2>
-<ul>
-    <li><b>Meta Pixel (Facebook e Instagram):</b> mede visitas e cliques para os anúncios. Ele usa cookies e envia à Meta dados como o seu endereço IP, o navegador e as páginas que você visitou.</li>
-</ul>
-<p>Você pode bloquear ou apagar cookies nas configurações do seu navegador. Algumas partes da página podem deixar de funcionar.</p>
+    <section class="legal-sec" aria-labelledby="s3">
+      <h2 id="s3"><span class="num">03</span>Para que usamos os dados</h2>
+      <ul>
+        <li><span>Liberar o acesso ao curso e aos bônus, e enviar as informações da compra (execução do contrato).</span></li>
+        <li><span>Cumprir obrigações fiscais e legais (obrigação legal).</span></li>
+        <li><span>Responder dúvidas, pedidos de suporte e de reembolso (execução do contrato).</span></li>
+        <li><span>Responder pelo Instagram a quem comenta ou manda mensagem com as palavras SABOTADOR e DISCIPLINA, e entregar a carta de story do diagnóstico (legítimo interesse).</span></li>
+        <li><span>Medir o desempenho da página, do diagnóstico e dos anúncios, e melhorar a comunicação (legítimo interesse ou consentimento, conforme a ferramenta).</span></li>
+        <li><span>Enviar por e-mail conteúdos do Luka sobre hábitos e ofertas do curso, para quem deixou o e-mail no diagnóstico ou autorizou na compra (consentimento). Você pode cancelar a qualquer momento pelo link no fim de cada e-mail.</span></li>
+      </ul>
+    </section>
 
-<h2>5. Com quem compartilhamos</h2>
-<p>Compartilhamos dados apenas com os serviços necessários para vender e entregar o curso: a HeroSpark, o serviço de hospedagem da página e da área de membros, as ferramentas de medição e de envio de e-mail. <b>Não vendemos os seus dados.</b></p>
-<p>As skills de conversa com o Luka funcionam dentro do Claude. O que você escreve lá é tratado pela Anthropic, conforme a política de privacidade dela.</p>
+    <section class="legal-sec" aria-labelledby="s4">
+      <h2 id="s4"><span class="num">04</span>Cookies e ferramentas de terceiros</h2>
+      <ul>
+        <li><span><b>Meta Pixel (Facebook e Instagram):</b> mede visitas, cliques, o diagnóstico concluído e o início da compra, para os anúncios. Ele usa cookies e envia à Meta dados como o seu endereço IP, o navegador e as páginas que você visitou.</span></li>
+        <li><span><b>Cakto:</b> o checkout e a área de membros podem usar cookies próprios, conforme a política da Cakto.</span></li>
+        <li><span><b>Brevo:</b> os e-mails que enviamos registram se foram abertos e quais links foram clicados, para sabermos o que é útil para você.</span></li>
+      </ul>
+      <p>Você pode bloquear ou apagar cookies nas configurações do seu navegador. Algumas partes da página podem deixar de funcionar.</p>
+    </section>
 
-<h2>6. Transferência internacional</h2>
-<p>Alguns desses serviços, como Meta e Anthropic, guardam dados fora do Brasil. Essas transferências seguem as regras da LGPD para transferência internacional de dados.</p>
+    <section class="legal-sec" aria-labelledby="s5">
+      <h2 id="s5"><span class="num">05</span>Com quem compartilhamos</h2>
+      <p>Compartilhamos dados apenas com os serviços necessários para vender e entregar o curso: a Cakto (pagamento e área de membros), a Cloudflare (hospedagem do site), o ManyChat (automações do Instagram), a Meta (medição e anúncios) e a Brevo (envio de e-mail). Não vendemos os seus dados.</p>
+      <p>As skills de conversa com o Luka funcionam dentro da ferramenta de inteligência artificial que você escolher, como o Claude ou o ChatGPT. O que você escreve lá é tratado pela empresa dona da ferramenta (a Anthropic ou a OpenAI), conforme a política de privacidade dela.</p>
+    </section>
 
-<h2>7. Por quanto tempo guardamos</h2>
-<p>Guardamos os dados enquanto o seu acesso ao curso estiver ativo e pelo prazo exigido por lei para fins fiscais e de defesa de direitos. Depois disso, os dados são apagados ou tornados anônimos.</p>
+    <section class="legal-sec" aria-labelledby="s6">
+      <h2 id="s6"><span class="num">06</span>Transferência internacional</h2>
+      <p>Alguns desses serviços, como Meta, ManyChat, Cloudflare, Brevo (na União Europeia), Anthropic e OpenAI, guardam dados fora do Brasil. Essas transferências seguem as regras da LGPD para transferência internacional de dados.</p>
+    </section>
 
-<h2>8. Os seus direitos</h2>
-<p>Você pode, a qualquer momento:</p>
-<ul>
-  <li>confirmar se tratamos os seus dados e pedir acesso a eles;</li>
-  <li>corrigir dados incompletos ou desatualizados;</li>
-  <li>pedir a exclusão, a anonimização ou o bloqueio de dados desnecessários;</li>
-  <li>pedir a portabilidade dos dados;</li>
-  <li>revogar o consentimento que tiver dado;</li>
-  <li>saber com quem compartilhamos os seus dados.</li>
-</ul>
-<p>Para isso, escreva para <a href="mailto:olukanero@gmail.com">olukanero@gmail.com</a>. Você também pode reclamar à Autoridade Nacional de Proteção de Dados (ANPD).</p>
+    <section class="legal-sec" aria-labelledby="s7">
+      <h2 id="s7"><span class="num">07</span>Por quanto tempo guardamos</h2>
+      <ul>
+        <li><span><b>O e-mail e o resultado do diagnóstico:</b> enquanto você quiser receber os e-mails. Se cancelar, apagamos ou tornamos anônimos.</span></li>
+        <li><span><b>As conversas e as marcações no ManyChat:</b> enquanto a conversa com o @lukanero estiver ativa. Você pode pedir a exclusão a qualquer momento.</span></li>
+        <li><span><b>Os dados da compra e do acesso:</b> enquanto o seu acesso ao curso estiver ativo e pelo prazo exigido por lei para fins fiscais e de defesa de direitos. Depois disso, os dados são apagados ou tornados anônimos.</span></li>
+      </ul>
+    </section>
 
-<h2>9. Segurança</h2>
-<p>Usamos serviços com conexão segura (HTTPS) e controle de acesso para proteger os seus dados. Nenhum sistema é totalmente imune a falhas, mas avisaremos você e a ANPD caso aconteça um incidente que traga risco.</p>
+    <section class="legal-sec" aria-labelledby="s8">
+      <h2 id="s8"><span class="num">08</span>Os seus direitos</h2>
+      <p>Você pode, a qualquer momento:</p>
+      <ul>
+        <li><span>confirmar se tratamos os seus dados e pedir acesso a eles</span></li>
+        <li><span>corrigir dados incompletos ou desatualizados</span></li>
+        <li><span>pedir a exclusão, a anonimização ou o bloqueio de dados desnecessários</span></li>
+        <li><span>pedir a portabilidade dos dados</span></li>
+        <li><span>revogar o consentimento que tiver dado</span></li>
+        <li><span>saber com quem compartilhamos os seus dados</span></li>
+      </ul>
+      <p>Para isso, escreva para <a href="mailto:olukanero@gmail.com">olukanero@gmail.com</a>. Você também pode reclamar à Autoridade Nacional de Proteção de Dados (ANPD).</p>
+    </section>
 
-<h2>10. Menores de idade</h2>
-<p>O curso é destinado a maiores de 18 anos. Não coletamos dados de menores de forma intencional.</p>
+    <section class="legal-sec" aria-labelledby="s9">
+      <h2 id="s9"><span class="num">09</span>Segurança</h2>
+      <p>Usamos serviços com conexão segura (HTTPS) e controle de acesso para proteger os seus dados. Nenhum sistema é totalmente imune a falhas, mas avisaremos você e a ANPD caso aconteça um incidente que traga risco.</p>
+    </section>
 
-<h2>11. Mudanças nesta política</h2>
-<p>Esta política pode ser atualizada. A data da última atualização fica no topo desta página.</p>
+    <section class="legal-sec" aria-labelledby="s10">
+      <h2 id="s10"><span class="num">10</span>Menores de idade</h2>
+      <p>O curso e o diagnóstico são destinados a maiores de 18 anos. Não coletamos dados de menores de forma intencional.</p>
+    </section>
 
-</div></main>
-<footer class="footer"><div class="wrap"><p>© Os Códigos da Disciplina · <a href="index.html">Página inicial</a> · <a href="termos.html">Termos</a></p></div></footer>
+    <section class="legal-sec" aria-labelledby="s11">
+      <h2 id="s11"><span class="num">11</span>Mudanças nesta política</h2>
+      <p>Esta política pode ser atualizada. A data da última atualização fica no topo desta página.</p>
+    </section>
+</main>
+
+<footer class="footer lk-dark">
+  <div class="wrap">
+    <p>© Os Códigos da Disciplina · <a href="index.html">Página inicial</a> · <a href="termos.html">Termos</a></p>
+  </div>
+</footer>
+
+<!-- Meta Pixel: só dispara no domínio publicado -->
+<script>
+(function () {
+  if (!/(^|\.)lukanero\.com\.br$/.test(location.hostname)) return;
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '2618686061904510');
+  fbq('track', 'PageView');
+})();
+</script>
 </body>
 </html>

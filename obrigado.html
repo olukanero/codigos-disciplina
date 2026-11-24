@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Compra confirmada · Os Códigos da Disciplina</title>
+<meta name="description" content="Sua compra de Os Códigos da Disciplina foi confirmada. Veja como acessar o curso e o primeiro passo de hoje.">
+<!-- página de obrigado: fora do Google -->
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#121212">
+<link rel="stylesheet" href="design_tokens.css">
+<link rel="icon" href="img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="preload" href="fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/space-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/icones.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+  /* =========================================================
+     Página de obrigado · Os Códigos da Disciplina
+     Usa só os tokens de design_tokens.css.
+     Copy: 02.funil/03.obrigado/pagina_obrigado_codigos_disciplina.md
+     ========================================================= */
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--lk-surface); color: var(--lk-on-surface); font: var(--lk-body-l); -webkit-font-smoothing: antialiased; }
+  h1, h2, h3, p, ul, ol { margin: 0; }
+  ul, ol { padding: 0; list-style: none; }
+  a { color: var(--lk-accent-text); }
+  b { font-weight: 600; color: var(--lk-on-surface); }
+  :focus-visible { outline: var(--lk-focus-width) solid var(--lk-focus); outline-offset: var(--lk-focus-offset); }
+  .ms { font-family: "Lk Icones"; font-weight: normal; font-style: normal; font-size: var(--lk-icon-s); line-height: 1; letter-spacing: normal; text-transform: none; display: inline-block; white-space: nowrap; -webkit-font-feature-settings: "liga"; font-feature-settings: "liga"; flex: none; }
+
+  .wrap { width: 100%; max-width: calc(var(--lk-container) + 2 * var(--lk-gutter)); margin: 0 auto; padding: 0 var(--lk-gutter); }
+  .narrow { max-width: var(--lk-container-text); margin-left: auto; margin-right: auto; }
+  .section { padding: var(--lk-section-y) 0; background: var(--lk-surface); }
+  .section.band { background: var(--lk-surface-container); }
+
+  .kicker { display: inline-block; font: var(--lk-kicker-font); letter-spacing: var(--lk-tracking-caps); text-transform: uppercase; color: var(--lk-kicker-color); }
+  .head { text-align: center; margin-bottom: var(--lk-space-8); }
+  .head .kicker { margin-bottom: var(--lk-kicker-gap); }
+  .h2 { font: var(--lk-headline-m); letter-spacing: var(--lk-tracking-tight); text-wrap: balance; }
+  @media (min-width: 840px) { .h2 { font: var(--lk-headline-l); letter-spacing: var(--lk-tracking-tight); } }
+
+  /* botão principal (igual ao da página de vendas) */
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--lk-button-icon-gap); width: 100%; min-height: var(--lk-button-height-l); padding: var(--lk-space-3) var(--lk-button-padding-x); border: 0; border-radius: var(--lk-button-radius); background: var(--lk-primary); color: var(--lk-on-primary); font: var(--lk-button-font); letter-spacing: 0.02em; text-transform: uppercase; text-align: center; text-decoration: none; cursor: pointer; box-shadow: var(--lk-elevation-1); transition: background var(--lk-duration-short) var(--lk-ease-standard), box-shadow var(--lk-duration-medium) var(--lk-ease-standard), transform var(--lk-duration-medium) var(--lk-ease-standard); }
+  .btn:hover { background: var(--lk-primary-hover); box-shadow: var(--lk-elevation-2); }
+  .btn:active { box-shadow: var(--lk-elevation-1); transform: translateY(1px); }
+  .lk-dark .btn { box-shadow: var(--lk-glow-primary); }
+  .lk-dark .btn:hover { box-shadow: var(--lk-glow-primary-hover); }
+  .btn .ms { transition: transform var(--lk-duration-medium) var(--lk-ease-standard); }
+  .btn:hover .ms { transform: translateX(2px); }
+  @media (min-width: 600px) { .btn { width: auto; min-width: var(--lk-button-min-width); } }
+  .cta { margin-top: var(--lk-space-8); text-align: center; }
+
+  /* =========================================================
+     1. TOPO · a confirmação
+     ========================================================= */
+  /* tela inteira no celular e no computador, igual ao topo da página de vendas. Se o conteúdo for maior, a área cresce. */
+  .hero { display: flex; align-items: center; min-height: 100svh; padding: var(--lk-space-12) 0; text-align: center; background: var(--lk-surface); }
+  @media (min-width: 840px) { .hero { padding: var(--lk-space-8) 0; } }
+  .done { width: 72px; height: 72px; margin: 0 auto var(--lk-space-6); border-radius: 50%; border: var(--lk-border-strong) solid var(--lk-primary); display: grid; place-content: center; color: var(--lk-primary); animation: pop var(--lk-duration-long) var(--lk-ease-emphasized-in) both; }
+  .done .ms { font-size: 40px; font-variation-settings: "opsz" 40; }
+  @keyframes pop { from { opacity: 0; transform: scale(.8); } }
+  .hero .kicker { margin-bottom: var(--lk-space-3); }
+  .hero h1 { font: var(--lk-hero); letter-spacing: var(--lk-tracking-tight); text-transform: uppercase; text-wrap: balance; max-width: 880px; margin: 0 auto; }
+  .hero h1 em { font-style: normal; color: var(--lk-accent-text); }
+  .hero .lead { margin-top: var(--lk-space-6); color: var(--lk-on-surface-variant); text-wrap: pretty; }
+  .mail-note { display: inline-flex; align-items: center; gap: var(--lk-space-2); margin-top: var(--lk-space-6); padding: var(--lk-space-3) var(--lk-space-4); border-radius: var(--lk-radius-md); background: var(--lk-surface-container); font-weight: 600; }
+  .mail-note .ms { color: var(--lk-accent-text); }
+
+  /* =========================================================
+     2. OS 3 PASSOS DE HOJE
+     ========================================================= */
+  .steps { display: grid; gap: var(--lk-card-gap); counter-reset: passo; }
+  @media (min-width: 840px) { .steps { grid-template-columns: repeat(3, 1fr); } }
+  .step { display: flex; flex-direction: column; gap: var(--lk-space-2); background: var(--lk-surface-lowest); border: var(--lk-border) solid var(--lk-outline-variant); border-radius: var(--lk-card-radius); padding: var(--lk-card-padding); }
+  .step h3 { font: var(--lk-title-l); }
+  .step p { font: var(--lk-body-m); color: var(--lk-on-surface-variant); }
+
+  /* =========================================================
+     3. O QUE ESPERAR · linha do tempo
+     ========================================================= */
+  .timeline { position: relative; display: grid; gap: var(--lk-space-6); }
+  .timeline::before { content: ""; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 2px; background: var(--lk-outline-variant); }
+  .timeline li { position: relative; padding-left: var(--lk-space-10); }
+  .timeline li::before { content: ""; position: absolute; left: 0; top: 4px; width: 16px; height: 16px; border-radius: 50%; background: var(--lk-surface-container); border: var(--lk-border-strong) solid var(--lk-outline); }
+  .timeline li:first-child::before { background: var(--lk-primary); border-color: var(--lk-primary); }
+  .timeline .when { display: block; font: var(--lk-label-m); letter-spacing: var(--lk-tracking-caps); text-transform: uppercase; color: var(--lk-on-surface-muted); margin-bottom: var(--lk-space-1); }
+  .timeline li:first-child .when { color: var(--lk-accent-text); }
+  .timeline p { color: var(--lk-on-surface-variant); }
+
+  .tip { margin-top: var(--lk-space-10); padding: var(--lk-card-padding); border-radius: var(--lk-card-radius); background: var(--lk-surface-lowest); color: var(--lk-on-surface-variant); }
+  .rule { margin-top: var(--lk-space-6); color: var(--lk-on-surface); font-weight: 600; }
+  /* uma linha só: 20px no celular, 32px a partir de 600px */
+  .sign { margin-top: var(--lk-space-12); text-align: center; font: 900 20px/28px var(--lk-font-text); letter-spacing: var(--lk-tracking-tight); text-transform: uppercase; white-space: nowrap; }
+  @media (min-width: 600px) { .sign { font: 900 32px/40px var(--lk-font-text); letter-spacing: var(--lk-tracking-tight); } }
+  .sign em { font-style: normal; color: var(--lk-accent-text); }
+
+  /* rodapé */
+  .footer { padding: var(--lk-space-8) 0 calc(var(--lk-space-8) + env(safe-area-inset-bottom)); background: var(--lk-surface); font: var(--lk-body-s); color: var(--lk-on-surface-muted); text-align: center; }
+  .footer a { color: inherit; }
+</style>
+</head>
+<body>
+
+<!-- ======================= 1. TOPO ======================= -->
+<header class="hero lk-dark">
+  <div class="wrap">
+    <div class="done" aria-hidden="true"><span class="ms">check</span></div>
+    <span class="kicker">Compra confirmada</span>
+    <h1>Pronto. Agora a gente monta o seu <em>sistema</em>.</h1>
+    <div class="narrow">
+      <p class="lead">Que bom ter você aqui. Deixa eu ser honesto: comprar um curso não muda hábito nenhum. Você sabe disso melhor que ninguém. O que muda é o que você faz hoje, e hoje cabe em poucos minutos.</p>
+      <p class="mail-note"><span class="ms" aria-hidden="true">mail</span>O acesso já foi para o seu e-mail.</p>
+    </div>
+    <div class="cta">
+      <a class="btn" href="https://aluno.cakto.com.br/app/area/codigos-disciplina">Acessar a área de membros <span class="ms" aria-hidden="true">arrow_forward</span></a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ======================= 2. OS 3 PASSOS DE HOJE ======================= -->
+<section class="section" aria-labelledby="t-passos">
+  <div class="wrap">
+    <div class="head narrow">
+      <span class="kicker">Os 3 passos de hoje</span>
+      <h2 class="h2" id="t-passos">Faz isso agora, antes de fechar esta página</h2>
+    </div>
+    <ol class="steps">
+      <li class="step"><span class="kicker">Passo 1</span><h3>Abre o e-mail de acesso</h3><p>Procura o e-mail com o seu login e a sua senha. Se não estiver na caixa de entrada, olha no spam e nas promoções.</p></li>
+      <li class="step"><span class="kicker">Passo 2</span><h3>Começa pelo Comece aqui</h3><p>Na área de membros, lê as boas-vindas e baixa o workbook. Imprime, ou deixa aberto do lado enquanto assiste.</p></li>
+      <li class="step"><span class="kicker">Passo 3</span><h3>Assiste à aula 1 hoje</h3><p>São uns 5 minutos. Ela termina num exercício: pausa, faz no workbook e volta.</p></li>
+    </ol>
+    <div class="cta">
+      <a class="btn" href="https://aluno.cakto.com.br/app/area/codigos-disciplina">Acessar a área de membros <span class="ms" aria-hidden="true">arrow_forward</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= 3. O QUE ESPERAR ======================= -->
+<section class="section band" aria-labelledby="t-esperar">
+  <div class="wrap">
+    <div class="narrow">
+      <div class="head">
+        <h2 class="h2" id="t-esperar">O que esperar</h2>
+      </div>
+      <ol class="timeline">
+        <li><span class="when">Hoje</span><p>As aulas 1 a 6, o workbook, os dois manuais e as duas skills já estão liberados.</p></li>
+        <li><span class="when">Nos primeiros dias</span><p>As aulas 1 a 6 cabem aqui. Na aula 2 você descobre o seu Sabotador, numa conversa comigo ou no papel. Na aula 6 você marca o primeiro X.</p></li>
+        <li><span class="when">No dia 7</span><p>Chegam as aulas 7 e 8 e os 3 bônus, quando a sua primeira semana já rodou.</p></li>
+        <li><span class="when">Na semana 8</span><p>A aula 8 e a conclusão fecham o ciclo.</p></li>
+      </ol>
+      <p class="tip">Se puder, já separa um calendário de papel e uma caneta vermelha. Na aula 6, eles começam a trabalhar por você.</p>
+      <p class="rule">Daqui pra frente, a regra é simples: um hábito só, começando com 2 minutos, e nunca dois dias seguidos sem fazer.</p>
+      <p class="sign">Disciplina <em>&gt;</em> Motivação</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer lk-dark">
+  <div class="wrap">
+    <p>© Os Códigos da Disciplina · <a href="termos.html">Termos</a> · <a href="privacidade.html">Privacidade</a></p>
+  </div>
+</footer>
+
+<!-- Meta Pixel: só dispara no domínio publicado. Só PageView aqui: o evento de compra (Purchase) é enviado pela integração da Cakto, para não contar a venda duas vezes. -->
+<script>
+(function () {
+  if (!/(^|\.)lukanero\.com\.br$/.test(location.hostname)) return;
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '2618686061904510');
+  fbq('track', 'PageView');
+})();
+</script>
+</body>
+</html>

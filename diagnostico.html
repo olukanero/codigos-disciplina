@@ -1,0 +1,894 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+<title>Diagnóstico dos Sabotadores · Luka Nero</title>
+<meta name="description" content="Em uns 3 minutos de conversa, descubra qual dos 7 Sabotadores trava os seus hábitos e por onde começar a desarmar ele.">
+<meta name="theme-color" content="#121212">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Diagnóstico dos Sabotadores">
+<meta property="og:description" content="Você trava sempre no mesmo ponto, e esse ponto tem nome. Descubra o seu em uns 3 minutos.">
+<meta property="og:url" content="https://lukanero.com.br/diagnostico">
+<!-- IMAGEM: imagem de compartilhamento 1200 × 630, em img/compartilhar.jpg -->
+<meta property="og:image" content="https://lukanero.com.br/img/compartilhar.jpg">
+<meta property="og:locale" content="pt_BR">
+<link rel="canonical" href="https://lukanero.com.br/diagnostico">
+<link rel="stylesheet" href="design_tokens.css">
+<link rel="icon" href="img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="preload" href="fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/space-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/icones.woff2" as="font" type="font/woff2" crossorigin>
+<script>
+  /* o tema segue o aparelho: claro no modo claro, escuro no modo escuro.
+     Se o aparelho não disser, fica escuro. Muda junto se a pessoa trocar o modo com a página aberta. */
+  (function () {
+    var cores = { light: '#FAFAFA', dark: '#121212' };
+    function aplicar(claro) {
+      var t = claro ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', t);
+      var m = document.querySelector('meta[name="theme-color"]'); if (m) m.setAttribute('content', cores[t]);
+    }
+    try {
+      var mq = matchMedia('(prefers-color-scheme: light)');
+      aplicar(mq.matches);
+      if (mq.addEventListener) mq.addEventListener('change', function (e) { aplicar(e.matches); });
+      else if (mq.addListener) mq.addListener(function (e) { aplicar(e.matches); });
+    } catch (e) {}
+  })();
+</script>
+<style>
+  /* =========================================================
+     Isca · Diagnóstico dos Sabotadores (a conversa)
+     Gerada por 02.funil/01.isca/_gerador a partir da copy
+     isca_diagnostico_sabotadores.md. Usa só os tokens.
+     ========================================================= */
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { height: 100%; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--lk-surface); color: var(--lk-on-surface); font: var(--lk-body-l); -webkit-font-smoothing: antialiased; }
+  h1, h2, h3, p, ul, blockquote { margin: 0; }
+  ul { padding: 0; list-style: none; }
+  a { color: var(--lk-accent-text); }
+  b, strong { font-weight: 600; }
+  :focus-visible { outline: var(--lk-focus-width) solid var(--lk-focus); outline-offset: var(--lk-focus-offset); }
+  .ms { font-family: "Lk Icones"; font-weight: normal; font-style: normal; font-size: var(--lk-icon-m); line-height: 1; letter-spacing: normal; text-transform: none; display: inline-block; white-space: nowrap; -webkit-font-feature-settings: "liga"; font-feature-settings: "liga"; }
+
+  /* ---------- a moldura do app: topo fixo, conversa no meio, respostas embaixo ---------- */
+  /* o app ocupa a tela toda. O conteúdo (topo, conversa e respostas) fica numa coluna de 720px no centro. */
+  .app { --col: max(var(--lk-gutter), calc((100% - var(--lk-container-text)) / 2)); display: flex; flex-direction: column; height: 100dvh; background: var(--lk-surface); }
+
+  /* barra do topo */
+  .topbar { flex: none; position: relative; z-index: var(--lk-z-topbar); padding-top: env(safe-area-inset-top); background: var(--lk-surface); border-bottom: var(--lk-border) solid var(--lk-outline-variant); }
+  .topbar .row { display: flex; align-items: center; gap: var(--lk-space-3); height: var(--lk-topbar-height); padding: 0 var(--col); }
+  .avatar { flex: none; width: var(--lk-avatar-m); height: var(--lk-avatar-m); border-radius: var(--lk-radius-full); background: var(--lk-surface-high) center / cover no-repeat; display: grid; place-content: center; font: 700 18px/1 var(--lk-font-title); color: var(--lk-on-surface); }
+  .avatar.s { width: var(--lk-avatar-s); height: var(--lk-avatar-s); font-size: 13px; }
+  .topbar b { display: block; font: var(--lk-title-m); }
+  .topbar .status { font: var(--lk-body-s); color: var(--lk-on-surface-muted); }
+
+  /* conversa */
+  .chat { flex: 1; overflow-y: auto; overscroll-behavior: contain; padding: var(--lk-space-5) var(--col) var(--lk-space-6); display: flex; flex-direction: column; gap: var(--lk-space-2); scroll-behavior: smooth; }
+  .note { align-self: center; max-width: 320px; text-align: center; font: var(--lk-body-s); color: var(--lk-on-surface-muted); margin-bottom: var(--lk-space-3); }
+  .msg { display: flex; align-items: flex-start; gap: var(--lk-space-2); animation: up var(--lk-duration-long) var(--lk-ease-decelerate) both; }
+  .msg.luka .slot { flex: none; width: var(--lk-avatar-s); }
+  .msg.first { margin-top: var(--lk-space-3); }
+  .bubble { max-width: var(--lk-bubble-max); padding: var(--lk-space-3) var(--lk-space-4); border-radius: var(--lk-bubble-radius); font: var(--lk-body-l); overflow-wrap: anywhere; }
+  .luka .bubble { background: var(--lk-surface-container); color: var(--lk-on-surface); }
+  .luka.first .bubble { border-top-left-radius: var(--lk-bubble-corner); }
+  .user { justify-content: flex-end; }
+  .user .bubble { background: var(--lk-inverse-surface); color: var(--lk-inverse-on-surface); border-top-right-radius: var(--lk-bubble-corner); }
+  .bubble p + p, .bubble p + ul, .bubble ul + p, .bubble blockquote + p, .bubble p + blockquote, .bubble h3 + blockquote { margin-top: var(--lk-space-3); }
+  .bubble h3 { font: var(--lk-title-l); margin-bottom: var(--lk-space-2); }
+  .bubble blockquote { border-left: 4px solid var(--lk-primary); padding-left: var(--lk-space-3); font: var(--lk-title-m); }
+  .bubble ul { display: grid; gap: var(--lk-space-1); }
+  .bubble li { display: flex; gap: var(--lk-space-2); }
+  .bubble li::before { content: ""; flex: none; width: 6px; height: 6px; margin-top: 9px; border-radius: 50%; background: var(--lk-primary); }
+  .typing .bubble { display: inline-flex; gap: 4px; padding: var(--lk-space-4); }
+  .typing i { width: 6px; height: 6px; border-radius: 50%; background: var(--lk-on-surface-muted); animation: blink 1.2s infinite both; }
+  .typing i:nth-child(2) { animation-delay: .15s; } .typing i:nth-child(3) { animation-delay: .3s; }
+  @keyframes up { from { opacity: 0; transform: translateY(8px); } }
+  @keyframes blink { 0%, 80%, 100% { opacity: .3; } 40% { opacity: 1; } }
+
+  /* o resultado, no formato Carta */
+  .msg.wide { display: block; margin: var(--lk-space-3) 0 var(--lk-space-2); }
+  @media (min-width: 600px) { .msg.wide { margin-left: calc(var(--lk-avatar-s) + var(--lk-space-2)); } }
+  /* Carta resumida (componente Carta do DS): topo sempre escuro, corpo sempre claro */
+  .lkcard { container-type: inline-size; border-radius: var(--lk-radius-xl); overflow: hidden; border: var(--lk-border) solid var(--lk-outline-variant); max-width: 440px; }
+  .lkcard .light { background: var(--lk-surface-lowest); color: var(--lk-on-surface); }
+  .lkcard .top { background: var(--lk-surface); color: var(--lk-on-surface); padding: var(--lk-space-6); }
+  .lkcard .top .kicker { font: var(--lk-label-m); letter-spacing: var(--lk-tracking-caps); text-transform: uppercase; color: var(--lk-accent-text); }
+  .lkcard .top svg { display: block; width: var(--lk-icon-xl); height: var(--lk-icon-xl); color: var(--lk-primary); margin: var(--lk-space-4) 0; }
+  .lkcard .stroke { width: 48px; height: 6px; border-radius: var(--lk-radius-full); background: var(--lk-primary); }
+  /* --lk-name, sem o artigo. O tamanho é o maior em que SOBRECARREGADO (10,98 × o tamanho da fonte, em Inter 900
+     com o espaçamento de caixa alta) cabe numa linha na largura interna da carta (100cqi − 48px de padding).
+     Assim só ROTA DA ESTRUTURA quebra em 2 linhas. */
+  .lkcard .name { font: var(--lk-name); font-size: clamp(20px, calc((100cqi - 48px) / 11.2), 40px); line-height: 1.1; text-transform: uppercase; letter-spacing: var(--lk-tracking-caps); margin: var(--lk-space-4) 0 var(--lk-space-2); }
+  .lkcard .lie { font: var(--lk-headline-s); font-weight: 500; }
+  .lkcard .metas { display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: var(--lk-border) solid var(--lk-outline-variant); }
+  .lkcard .metas div { padding: var(--lk-space-3); font: var(--lk-body-s); color: var(--lk-on-surface-muted); }
+  .lkcard .metas div + div { border-left: var(--lk-border) solid var(--lk-outline-variant); }
+  .lkcard .metas b { display: block; font: var(--lk-title-s); color: var(--lk-on-surface); }
+  .lkcard .body { padding: var(--lk-space-5) var(--lk-space-6); display: grid; gap: var(--lk-space-2); font: var(--lk-body-m); color: var(--lk-on-surface-variant); }
+  .lkcard .body .label { font: var(--lk-title-s); text-transform: uppercase; letter-spacing: var(--lk-tracking-caps); color: var(--lk-on-surface); padding-bottom: var(--lk-space-2); border-bottom: var(--lk-border-strong) solid var(--lk-on-surface); margin-bottom: var(--lk-space-1); }
+  .lkcard .body b { color: var(--lk-on-surface); }
+  .lkcard .foot { display: flex; justify-content: space-between; gap: var(--lk-space-3); padding: var(--lk-space-3) var(--lk-space-6); font: var(--lk-label-s); color: var(--lk-on-surface-muted); border-top: var(--lk-border) solid var(--lk-outline-variant); }
+  .lkcard .foot b { color: var(--lk-on-surface); }
+
+  /* botão da oferta, dentro da conversa */
+  .msg.cta { display: block; margin-top: var(--lk-space-3); }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--lk-button-icon-gap); width: 100%; min-height: var(--lk-button-height-l); padding: var(--lk-space-3) var(--lk-button-padding-x); border: 0; border-radius: var(--lk-button-radius); background: var(--lk-primary); color: var(--lk-on-primary); font: var(--lk-button-font); letter-spacing: 0.02em; text-transform: uppercase; text-align: center; text-decoration: none; cursor: pointer; box-shadow: var(--lk-elevation-1); transition: background var(--lk-duration-short) var(--lk-ease-standard), box-shadow var(--lk-duration-medium) var(--lk-ease-standard); }
+  [data-theme="dark"] .btn { box-shadow: var(--lk-glow-primary); }
+  .btn:hover { background: var(--lk-primary-hover); }
+  [data-theme="dark"] .btn:hover { box-shadow: var(--lk-glow-primary-hover); }
+  .btn .ms { font-size: var(--lk-icon-s); }
+
+  /* ---------- área das respostas (rodapé fixo) ---------- */
+  .answers { flex: none; padding: var(--lk-space-3) var(--col) calc(var(--lk-space-3) + env(safe-area-inset-bottom)); background: var(--lk-surface); border-top: var(--lk-border) solid var(--lk-outline-variant); }
+  .answers:empty { display: none; }
+  .options { display: grid; gap: var(--lk-space-2); max-height: 52dvh; overflow-y: auto; }
+  .options.grid2 { grid-template-columns: 1fr 1fr; }
+  .option { position: relative; display: flex; align-items: center; width: 100%; min-height: var(--lk-touch); padding: var(--lk-space-3) var(--lk-space-4); border-radius: var(--lk-radius-md); border: var(--lk-border) solid var(--lk-outline); background: var(--lk-surface-lowest); color: var(--lk-on-surface); font: var(--lk-body-l); text-align: left; cursor: pointer; transition: background var(--lk-duration-short) var(--lk-ease-standard); animation: up var(--lk-duration-long) var(--lk-ease-decelerate) both; }
+  .options.grid2 .option { justify-content: center; text-align: center; }
+  .option:hover { background: color-mix(in srgb, var(--lk-on-surface) var(--lk-state-hover), var(--lk-surface-lowest)); }
+  .option:active { background: var(--lk-primary-container); border: var(--lk-border-strong) solid var(--lk-primary); padding: calc(var(--lk-space-3) - 1px) calc(var(--lk-space-4) - 1px); }
+  .field { display: flex; align-items: flex-end; gap: var(--lk-space-2); }
+  .field textarea, .field input { flex: 1; min-height: var(--lk-field-height); max-height: 120px; padding: 12px var(--lk-field-padding-x); border-radius: var(--lk-field-radius); border: var(--lk-border) solid var(--lk-outline); background: var(--lk-surface-container); color: var(--lk-on-surface); font: var(--lk-body-l); resize: none; outline: none; }
+  .field textarea::placeholder, .field input::placeholder { color: var(--lk-on-surface-muted); }
+  .field textarea:focus, .field input:focus { border: var(--lk-border-strong) solid var(--lk-primary); padding: 11px calc(var(--lk-field-padding-x) - 1px); }
+  .field.error input { border: var(--lk-border-strong) solid var(--lk-error); padding: 11px calc(var(--lk-field-padding-x) - 1px); }
+  .send { flex: none; width: var(--lk-touch); height: var(--lk-touch); border: 0; border-radius: var(--lk-radius-full); background: var(--lk-primary); color: var(--lk-on-primary); display: grid; place-content: center; cursor: pointer; transition: background var(--lk-duration-short) var(--lk-ease-standard); }
+  .send:hover { background: var(--lk-primary-hover); }
+  .send:disabled { background: color-mix(in srgb, var(--lk-on-surface) 12%, transparent); color: color-mix(in srgb, var(--lk-on-surface) 38%, transparent); cursor: default; }
+  .hint { margin-top: var(--lk-space-2); font: var(--lk-body-s); color: var(--lk-on-surface-muted); }
+  .hint.err { color: var(--lk-error); font-weight: 600; }
+  .hint a { color: inherit; }
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div class="row">
+      <!-- IMAGEM: foto do Luka para o avatar, quadrada (192 × 192), em img/luka.webp. Sem a foto, aparece a inicial. -->
+      <div class="avatar" id="avatar" aria-hidden="true">L</div>
+      <div>
+        <b>Luka Nero</b>
+        <span class="status">Disciplina &gt; Motivação</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="chat" id="chat" aria-live="polite">
+    <p class="note">Uma conversa de uns 3 minutos. Ferramenta de autorreconhecimento, não é teste psicológico.</p>
+  </main>
+
+  <footer class="answers" id="answers"></footer>
+</div>
+
+<!-- Meta Pixel: só dispara no domínio publicado -->
+<script>
+(function () {
+  if (!/(^|\.)lukanero\.com\.br$/.test(location.hostname)) return;
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '2618686061904510');
+  fbq('track', 'PageView');
+})();
+</script>
+
+<script>
+/* =================== Configuração =================== */
+/* a página de vendas, na pasta de cima. Aberto como arquivo no computador, aponta direto para o index.html. */
+const LINK_PAGINA = (location.protocol === "file:" ? "index.html" : "/") + "?utm_source=diagnostico&utm_medium=isca";
+const LINK_PRIVACIDADE = "privacidade.html";
+const FOTO_LUKA = "img/luka.webp";
+/* Para onde vai o e-mail com o resultado (POST em JSON): a função functions/api/contato.js,
+   que guarda o contato na Brevo. Aberto como arquivo no computador, não envia. */
+const ENVIO_EMAIL = location.protocol === "file:" ? "" : "/api/contato";
+const STORAGE_KEY = "lukanero-diagnostico-v3";
+/* ==================================================== */
+
+/* ---------- Textos da copy (gerados a partir do .md) ---------- */
+const PASSAGEM = "Agora umas cenas rápidas. Pensa no que acontece de verdade, não no que você gostaria que acontecesse.";
+const CENAS = [
+ {
+  "texto": "Você decidiu que agora vai. Como costuma ser a largada?",
+  "comHabito": "Pensa em **{h}**. Você decidiu que agora vai. Como costuma ser a largada?",
+  "opcoes": [
+   [
+    "G",
+    "Com tudo. Mudo várias coisas de uma vez",
+    "Energia de sobra na largada. Guarda essa."
+   ],
+   [
+    "B",
+    "Pesquiso e planejo até ficar perfeito antes de começar",
+    "Planejamento caprichado. Vamos ver se ele sai do papel."
+   ],
+   [
+    "C",
+    "Começo, mas sem muita fé de que vai durar",
+    "Começar desconfiado já diz bastante."
+   ],
+   [
+    "E",
+    "Começo quando sobra um tempo na agenda",
+    "Quando sobra. Essa palavra vai voltar."
+   ],
+   [
+    "R",
+    "Começo devagar, do jeito que dá",
+    "Devagar não é problema. Anotado."
+   ]
+  ]
+ },
+ {
+  "texto": "Chegou a hora que você tinha marcado. O que costuma acontecer?",
+  "comHabito": "Chegou a hora que você tinha marcado pra **{h}**. O que costuma acontecer?",
+  "opcoes": [
+   [
+    "A",
+    "Pego o celular “só um minutinho”",
+    "E o minutinho vira meia hora. Conheço esse."
+   ],
+   [
+    "E",
+    "Alguém me pede alguma coisa e eu cedo a hora",
+    "O seu horário virou o horário dos outros."
+   ],
+   [
+    "F",
+    "Bate um “não tô a fim de seguir regra hoje”",
+    "Rotina com cara de ordem. Interessante."
+   ],
+   [
+    "B",
+    "Sinto que ainda falta me preparar mais",
+    "O “ainda falta” é um sinal forte. Guarda essa."
+   ],
+   [
+    "R",
+    "Depende do dia. Às vezes faço, às vezes esqueço",
+    "Depender do dia costuma ser falta de estrutura. Faz sentido."
+   ]
+  ]
+ },
+ {
+  "texto": "Você falhou um dia. O que passa na sua cabeça?",
+  "comHabito": null,
+  "opcoes": [
+   [
+    "D",
+    "“Isso prova que eu não tenho jeito”",
+    "Pesado. E dito com a sua própria voz."
+   ],
+   [
+    "C",
+    "“Viu? Eu sabia que não ia funcionar”",
+    "A conclusão chegou antes do teste. Guarda essa."
+   ],
+   [
+    "G",
+    "“Amanhã eu compenso em dobro”",
+    "Em dobro costuma ser o começo do fim. Tô vendo."
+   ],
+   [
+    "A",
+    "“Depois eu faço”",
+    "O depois é um lugar onde muita coisa mora. Anotado."
+   ],
+   [
+    "R",
+    "“Normal. Sigo amanhã”",
+    "Boa. Falhar um dia é dado, não sentença."
+   ]
+  ]
+ },
+ {
+  "texto": "Lá pela terceira semana, como você costuma estar?",
+  "comHabito": "No caso de **{h}**, lá pela terceira semana, como você costuma estar?",
+  "opcoes": [
+   [
+    "G",
+    "Já perdeu a graça. Quero uma novidade",
+    "A novidade passou e levou a vontade junto."
+   ],
+   [
+    "F",
+    "Virou obrigação e me deu vontade de largar",
+    "Quando vira “tenho que”, você sai. Anotado."
+   ],
+   [
+    "E",
+    "A rotina dos outros engoliu o meu horário",
+    "De novo os outros na frente. Guarda essa."
+   ],
+   [
+    "B",
+    "Ainda ajustando o plano ideal",
+    "Três semanas ajustando. Hum. Anotado."
+   ],
+   [
+    "D",
+    "Seguindo, mas me cobrando pra caramba",
+    "Seguir se cobrando cansa. Isso conta."
+   ]
+  ]
+ },
+ {
+  "texto": "Alguém, ou um alarme, te cobra o hábito. O que você faz?",
+  "comHabito": null,
+  "opcoes": [
+   [
+    "F",
+    "Me dá raiva e vontade de fazer o contrário",
+    "Ninguém manda em você. Nem você mesmo."
+   ],
+   [
+    "D",
+    "Bate culpa e eu me critico por dentro",
+    "A crítica chega antes da ação. Guarda essa."
+   ],
+   [
+    "A",
+    "Respondo “já vou” e continuo no que tava",
+    "O “já vou” é primo do “tô chegando” carioca. Conheço bem."
+   ],
+   [
+    "C",
+    "Penso: “lá vem mais uma cobrança que não vai dar em nada”",
+    "Desconfiança de novo. Anotado."
+   ],
+   [
+    "R",
+    "Agradeço. Me ajuda a lembrar",
+    "Lembrete ajuda quando falta estrutura. Boa."
+   ]
+  ]
+ },
+ {
+  "texto": "Aparece um método novo pra criar hábitos. Qual é a sua primeira reação?",
+  "comHabito": null,
+  "opcoes": [
+   [
+    "C",
+    "Procuro o defeito antes de testar",
+    "O furo primeiro, o teste depois. Se tiver depois."
+   ],
+   [
+    "G",
+    "Quero aplicar tudo de uma vez, já",
+    "Tudo de uma vez. Já vi esse filme."
+   ],
+   [
+    "B",
+    "Salvo pra estudar a fundo antes de começar",
+    "A pasta de salvos tá cheia, né?"
+   ],
+   [
+    "D",
+    "Penso: “funciona pros outros, não pra mim”",
+    "Esse “não pra mim” é importante. Guarda essa."
+   ],
+   [
+    "F",
+    "Ignoro. Não gosto de seguir receita pronta",
+    "Receita pronta tem cheiro de ordem. Anotado."
+   ]
+  ]
+ },
+ {
+  "texto": "Num dia comum, o que mais rouba o seu hábito?",
+  "comHabito": null,
+  "opcoes": [
+   [
+    "A",
+    "Coisas mais gostosas: celular, série, rede social",
+    "O agradável sempre ganha do importante. Tô vendo."
+   ],
+   [
+    "E",
+    "Os pedidos dos outros",
+    "Mais uma vez, os outros primeiro. Guarda essa."
+   ],
+   [
+    "F",
+    "A sensação de prisão da rotina",
+    "Rotina como prisão. Faz sentido."
+   ],
+   [
+    "B",
+    "O medo de fazer mal feito",
+    "Se não dá pra fazer bem, nem começa. Conheço esse."
+   ],
+   [
+    "R",
+    "Não ter lugar nem horário certo pra ele",
+    "Sem lugar e sem hora, o hábito fica solto. Anotado."
+   ]
+  ]
+ },
+ {
+  "texto": "E no fim de um dia em que você não fez, o que costuma acontecer?",
+  "comHabito": null,
+  "opcoes": [
+   [
+    "G",
+    "Prometo que segunda eu começo de verdade",
+    "Segunda-feira não é estratégia. Mas anotado."
+   ],
+   [
+    "E",
+    "Penso que fiz o que deu, com tanta gente precisando de mim",
+    "Você cuidou de todo mundo. Menos de você."
+   ],
+   [
+    "A",
+    "Fico no celular até tarde e durmo com culpa",
+    "O agradável cobrou a conta à noite."
+   ],
+   [
+    "D",
+    "Me xingo por dentro",
+    "Você fala com você de um jeito que não falaria com ninguém. Guarda essa."
+   ],
+   [
+    "C",
+    "Penso: “nem sei por que ainda tento”",
+    "O cansaço de tentar. Isso conta."
+   ],
+   [
+    "R",
+    "Nem percebo, porque não tinha hora marcada",
+    "Sem hora marcada, o dia passa e ninguém nota."
+   ]
+  ]
+ }
+];
+const PADRAO = {"A": ["Olha o agradável ganhando de novo. Tô vendo um padrão aqui.", "Terceira vez que o “depois” aparece. Guarda essa, ela volta no resultado."], "B": ["De novo o “ainda não”. Tô vendo um padrão aqui.", "Terceira vez que o plano vem antes da ação. Guarda essa, ela volta no resultado."], "C": ["De novo a desconfiança chegando antes do teste. Tô vendo um padrão aqui.", "Terceira vez que você decide antes de testar. Guarda essa, ela volta no resultado."], "D": ["De novo você sendo duro com você. Tô vendo um padrão aqui.", "Terceira vez que a crítica chega antes da ação. Guarda essa, ela volta no resultado."], "E": ["De novo os outros na frente. Tô vendo um padrão aqui.", "Terceira vez que você aparece por último na sua própria lista. Guarda essa, ela volta no resultado."], "F": ["De novo a obrigação virando motivo pra sair. Tô vendo um padrão aqui.", "Terceira vez que o “tenho que” te empurra pra fora. Guarda essa, ela volta no resultado."], "G": ["De novo a empolgação no comando. Tô vendo um padrão aqui.", "Terceira vez que a largada leva toda a energia. Guarda essa, ela volta no resultado."], "R": ["De novo a falta de lugar e hora certos. Isso conta.", "Mais uma vez, o problema parece estar na estrutura, não em você. Guarda essa."]};
+const PADRAO_MAIS = "Mais uma vez o mesmo padrão. A essa altura ele já tá bem claro.";
+const CIRCUNSTANCIA = "Tem alguma coisa grande agora tirando quase todo o seu tempo ou a sua energia? Um bebê, dois empregos, uma doença, uma mudança?\nTô quase fechando. Pensa no momento exato em que você trava.\n\nQual destas mais parece com o que passa na sua cabeça?";
+const FRASES = [["A", "“Depois eu faço. Agora vou só ver uma coisa rapidinho.”"], ["B", "“Ainda não está pronto.”"], ["C", "“Isso não vai funcionar.”"], ["D", "“Eu não tenho jeito.”"], ["E", "“Agora não dá, alguém precisa de mim.”"], ["F", "“Ninguém vai me dizer o que fazer.”"], ["G", "“Desta vez eu vou mudar tudo.” E, semanas depois: “perdeu a graça.”"], ["X", "Nenhuma delas parece comigo."]];
+const SAB = {
+ "A": {
+  "letra": "A",
+  "nome": "Imediatista",
+  "mentira": "“Depois eu faço.”",
+  "chave": "7 · Recompensa",
+  "rota": "7 → 6 → 5",
+  "vira": "Focado",
+  "pega": "Você senta pra fazer algo importante e, em minutos, tá no celular. “Só cinco minutinhos” vira uma hora.",
+  "protege": "Ele te protege do desconforto de agora. O preço vai pro seu eu de amanhã.",
+  "naoE": "E ele não é preguiça: você tá sempre fazendo alguma coisa, só que a agradável.",
+  "luka": "Eu não acredito em vencer o agora no braço. Coloca o agora do lado do importante.",
+  "pro": "pra Imediatista",
+  "do": "de Imediatista",
+  "estrutura": false,
+  "icone": "<svg viewBox=\"0 0 48 48\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"14\" y=\"5\" width=\"20\" height=\"38\" rx=\"4\"/><path d=\"M21 37h6\"/><path d=\"M19 14h10M19 20h10M19 26h6\"/></svg>"
+ },
+ "B": {
+  "letra": "B",
+  "nome": "Perfeccionista",
+  "mentira": "“Ainda não está pronto.”",
+  "chave": "5 · Gatilho",
+  "rota": "5 → 9 → 8",
+  "vira": "Realizador",
+  "pega": "Você pesquisa e planeja muito mais do que executa. Precisa ter certeza de que vai dar certo antes de começar.",
+  "protege": "Ele te protege do julgamento e do imprevisto.",
+  "naoE": "E ele não é ter padrões altos: quem busca excelência entrega e depois melhora.",
+  "luka": "Andaime não é a casa. Começa feio, de propósito, e melhora depois.",
+  "pro": "pra Perfeccionista",
+  "do": "de Perfeccionista",
+  "estrutura": false,
+  "icone": "<svg viewBox=\"0 0 48 48\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M10 42V8M38 42V8M10 16h28M10 28h28M10 16l28 12M38 16 10 28\"/></svg>"
+ },
+ "C": {
+  "letra": "C",
+  "nome": "Cínico",
+  "mentira": "“Isso não funciona.”",
+  "chave": "8 · Rastreamento",
+  "rota": "8 → 11 → 4",
+  "vira": "Experimentador",
+  "pega": "Você acha o defeito de todo método antes de testar. Já consumiu muito conteúdo sobre mudança e aplicou pouco.",
+  "protege": "Ele te protege da decepção.",
+  "naoE": "E ele não é ceticismo saudável: o cético testa, Cínico decide antes.",
+  "luka": "Desconfia mesmo. Só não decide antes do dia 7. Acredita no X que você marcar.",
+  "pro": "pra Cínico",
+  "do": "de Cínico",
+  "estrutura": false,
+  "icone": "<svg viewBox=\"0 0 48 48\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"20\" cy=\"20\" r=\"12\"/><path d=\"m29 29 12 12\"/></svg>"
+ },
+ "D": {
+  "letra": "D",
+  "nome": "Autocrítico",
+  "mentira": "“Eu não tenho jeito.”",
+  "chave": "9 · Resiliência",
+  "rota": "9 → 4 → 8",
+  "vira": "Gentil",
+  "pega": "Antes de tentar, você já assume que vai falhar. Quando erra, fala com você mesmo com uma dureza que não usaria com ninguém.",
+  "protege": "Ele te protege da dor de tentar de verdade e confirmar o seu medo.",
+  "naoE": "E ele não é realismo: “ainda não sei” é realista, “nunca vou conseguir” é o Sabotador.",
+  "luka": "Essa voz dura não é você. É um padrão. Falhou um dia? É dado, não sentença.",
+  "pro": "pra Autocrítico",
+  "do": "de Autocrítico",
+  "estrutura": false,
+  "icone": "<svg viewBox=\"0 0 48 48\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m14 10 14 14M21 6l14 14M12 16l14-12M26 30l14-12\"/><path d=\"m24 22-16 18\"/><path d=\"M6 44h20\"/></svg>"
+ },
+ "E": {
+  "letra": "E",
+  "nome": "Sobrecarregado",
+  "mentira": "“Primeiro os outros.”",
+  "chave": "10 · Compromisso",
+  "rota": "10 → 4 → 6",
+  "vira": "Guardião",
+  "pega": "Os seus objetivos vivem pra depois porque alguém sempre precisa de você. Você reserva um tempo pra si e cede no primeiro pedido.",
+  "protege": "Ele te protege de decepcionar os outros.",
+  "naoE": "E ele não é falta de tempo real: boa parte da agenda poderia ser recusada, dividida ou renegociada.",
+  "luka": "Nunca sobra tempo. Por isso o seu precisa de hora marcada, igual ao dos outros.",
+  "pro": "pra Sobrecarregado",
+  "do": "de Sobrecarregado",
+  "estrutura": false,
+  "icone": "<svg viewBox=\"0 0 48 48\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"14\" r=\"5\"/><circle cx=\"24\" cy=\"8\" r=\"5\"/><circle cx=\"36\" cy=\"14\" r=\"5\"/><path d=\"M12 42c0-8 5-14 12-14s12 6 12 14\"/></svg>"
+ },
+ "F": {
+  "letra": "F",
+  "nome": "Rebelde",
+  "mentira": "“Ninguém manda em mim.”",
+  "chave": "4 · Identidade",
+  "rota": "4 → 6 → 12",
+  "vira": "Autor",
+  "pega": "Quando alguém te cobra, dá vontade de fazer o contrário. Você abandona os próprios planos quando eles viram obrigação.",
+  "protege": "Ele protege a sua liberdade.",
+  "naoE": "E ele não é independência: quem sempre faz o contrário continua sendo guiado pelos outros.",
+  "luka": "Ninguém manda em você mesmo. Por isso quem escreve a regra é você.",
+  "pro": "pra Rebelde",
+  "do": "de Rebelde",
+  "estrutura": false,
+  "icone": "<svg viewBox=\"0 0 48 48\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M14 22V14a3 3 0 0 1 6 0v6M20 20v-8a3 3 0 0 1 6 0v8M26 20v-6a3 3 0 0 1 6 0v8M32 22v-2a3 3 0 0 1 6 0v8c0 8-6 14-13 14s-11-4-11-10v-8a3 3 0 0 1 6 0\"/></svg>"
+ },
+ "G": {
+  "letra": "G",
+  "nome": "Empolgado",
+  "mentira": "“Vou mudar tudo.”",
+  "chave": "12 · Automatização",
+  "rota": "12 → 7 → 11",
+  "vira": "Constante",
+  "pega": "Quando decide mudar, você quer mudar tudo de uma vez. Os primeiros dias são intensos e, semanas depois, perdeu a graça.",
+  "protege": "Ele te protege do tédio do dia comum.",
+  "naoE": "E ele não é falta de capacidade: energia você tem, mas ela vai toda pra largada.",
+  "luka": "Um hábito não precisa de um Carnaval por mês. Precisa do dia comum.",
+  "pro": "pra Empolgado",
+  "do": "de Empolgado",
+  "estrutura": false,
+  "icone": "<svg viewBox=\"0 0 48 48\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M24 4v8M24 36v8M4 24h8M36 24h8M10 10l6 6M32 32l6 6M38 10l-6 6M16 32l-6 6\"/><circle cx=\"24\" cy=\"24\" r=\"4\"/></svg>"
+ },
+ "R": {
+  "letra": "R",
+  "nome": "Rota da Estrutura",
+  "mentira": "Falta estrutura.",
+  "chave": "6 · Ambiente",
+  "rota": "6 → 5 → 12",
+  "vira": "Construtor",
+  "pega": "Não tem um padrão interno forte te travando. O problema costuma estar na estrutura: um ambiente que não ajuda, nenhum lugar ou sequência fixos, nada que dispare a ação.",
+  "protege": "Isso é boa notícia: o conserto é mais mecânico, e costuma ser mais rápido.",
+  "naoE": "Mas não significa que você não precisa de nada. Sem estrutura, o hábito continua dependendo do dia bom.",
+  "luka": "Menos psicologia, mais canteiro. Arruma o lugar e deixa a casa trabalhar por você.",
+  "pro": "pra sua Rota da Estrutura",
+  "do": "da Rota da Estrutura",
+  "estrutura": true,
+  "icone": "<svg viewBox=\"0 0 48 48\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M6 42V18L24 6l18 12v24z\"/><path d=\"M6 30h18v12M24 18v12h18\"/></svg>"
+ }
+};
+
+const LETRAS = ["A", "B", "C", "D", "E", "F", "G"];
+const VEZES = [
+  { label: "Uma ou duas", curto: "uma ou duas vezes", foi: "nas uma ou duas vezes que você tentou" },
+  { label: "De 3 a 5", curto: "de 3 a 5 vezes", foi: "nas 3 a 5 vezes que você tentou" },
+  { label: "Mais de 5", curto: "mais de 5 vezes", foi: "nas mais de 5 vezes que você tentou" },
+  { label: "Perdi a conta", curto: "tantas vezes que perdeu a conta", foi: "em todas as vezes que você tentou" },
+];
+const PARADA = [
+  { label: "Antes de engrenar", txt: "antes mesmo de engrenar" },
+  { label: "Na primeira semana", txt: "logo na primeira semana" },
+  { label: "Na 2ª ou 3ª semana", txt: "lá pela segunda ou terceira semana" },
+  { label: "Depois de um mês", txt: "depois de um mês ou mais" },
+];
+const LARGADA = { G: "começa com tudo", B: "planeja tudo antes de começar", C: "começa, mesmo sem muita fé", E: "começa assim que sobra um tempo", R: "começa do jeito que dá" };
+
+/* ---------- As regras do resultado (seção 9 da copy) ---------- */
+function calcular(escolhas, frase) {
+  const somas = { A: 0, B: 0, C: 0, D: 0, E: 0, F: 0, G: 0 };
+  let estrutura = 0;
+  for (const b of escolhas) { if (b === "R") estrutura++; else somas[b]++; }
+  const ordem = LETRAS.slice().sort((x, y) => somas[y] - somas[x]);
+  const topo = somas[ordem[0]];
+  const empatados = ordem.filter((b) => somas[b] === topo);
+  let primario, empate = null;
+  if (topo <= 1 || estrutura > topo) primario = "R";                                   // 1. nada se destacou
+  else if (topo - somas[ordem[1]] >= 2) primario = ordem[0];                           // 2. destaque claro
+  else if (frase !== "X" && somas[frase] >= 2 && somas[frase] >= topo - 1) primario = frase; // 3. a frase decide
+  else if (empatados.length > 1) { primario = empatados[0]; empate = empatados.slice(0, 3); } // 4. empate exato
+  else primario = ordem[0];
+  const resto = ordem.filter((b) => b !== primario);
+  const segundo = primario === "R" ? ordem[0] : (somas[resto[0]] >= 2 ? resto[0] : "R"); // 5. o segundo
+  return { somas, ordem, estrutura, primario, segundo, empate };
+}
+
+/* ---------- Motor da conversa ---------- */
+const chat = document.getElementById("chat");
+const answers = document.getElementById("answers");
+const avatarEl = document.getElementById("avatar");
+let fotoOk = false;
+(function () { const img = new Image(); img.onload = () => { fotoOk = true; avatarEl.style.backgroundImage = "url('" + FOTO_LUKA + "')"; avatarEl.textContent = ""; document.querySelectorAll(".avatar.s").forEach(pintarAvatar); }; img.src = FOTO_LUKA; })();
+function pintarAvatar(el) { if (fotoOk) { el.style.backgroundImage = "url('" + FOTO_LUKA + "')"; el.textContent = ""; } }
+
+let salvas = [];
+let replay = [];
+let ultimo = null;
+const esperar = (ms) => new Promise((r) => setTimeout(r, ms));
+function carregar() { try { const s = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]"); return Array.isArray(s) ? s : []; } catch (e) { return []; } }
+function salvar() { try { localStorage.setItem(STORAGE_KEY, JSON.stringify(salvas)); } catch (e) {} }
+function escapar(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
+function inline(s) { return escapar(s).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>"); }
+function renderizar(texto) {
+  let html = "", lista = false, par = [];
+  const fp = () => { if (par.length) { html += "<p>" + par.map(inline).join("<br>") + "</p>"; par = []; } };
+  const fl = () => { if (lista) { html += "</ul>"; lista = false; } };
+  for (const bruta of texto.split("\n")) {
+    const l = bruta.trim(); let m;
+    if (!l) { fp(); fl(); continue; }
+    if ((m = l.match(/^###\s+(.*)$/))) { fp(); fl(); html += "<h3>" + inline(m[1]) + "</h3>"; continue; }
+    if ((m = l.match(/^>\s?(.*)$/))) { fp(); fl(); html += "<blockquote>" + inline(m[1]) + "</blockquote>"; continue; }
+    if ((m = l.match(/^[-*]\s+(.*)$/))) { fp(); if (!lista) { html += "<ul>"; lista = true; } html += "<li><span>" + inline(m[1]) + "</span></li>"; continue; }
+    fl(); par.push(l);
+  }
+  fp(); fl();
+  return html;
+}
+function limpar(s, max) { return s.replace(/[\r\n]+/g, " ").replace(/[*#>\[\]]/g, "").replace(/\s+/g, " ").trim().slice(0, max); }
+function rolar() { requestAnimationFrame(() => { chat.scrollTop = chat.scrollHeight; }); }
+
+function adicionar(quem, html, extra) {
+  const w = document.createElement("div");
+  const primeira = quem !== ultimo;
+  w.className = "msg " + quem + (primeira ? " first" : "") + (extra ? " " + extra : "");
+  if (quem === "luka" && !extra) {
+    const slot = document.createElement("div"); slot.className = "slot";
+    if (primeira) { const a = document.createElement("div"); a.className = "avatar s"; a.textContent = "L"; a.setAttribute("aria-hidden", "true"); pintarAvatar(a); slot.appendChild(a); }
+    w.appendChild(slot);
+  }
+  if (extra) w.innerHTML = html;
+  else { const b = document.createElement("div"); b.className = "bubble"; b.innerHTML = html; w.appendChild(b); }
+  chat.appendChild(w); ultimo = quem; rolar();
+  return w;
+}
+
+async function diz(texto) {
+  if (!replay.length) {
+    const t = document.createElement("div");
+    t.className = "msg luka typing" + (ultimo !== "luka" ? " first" : "");
+    t.innerHTML = '<div class="slot">' + (ultimo !== "luka" ? '<div class="avatar s" aria-hidden="true">L</div>' : "") + '</div><div class="bubble" aria-label="Luka está digitando"><i></i><i></i><i></i></div>';
+    const a = t.querySelector(".avatar"); if (a) pintarAvatar(a);
+    chat.appendChild(t); rolar();
+    await esperar(Math.min(350 + texto.length * 9, 1500));
+    t.remove();
+  }
+  adicionar("luka", renderizar(texto));
+}
+
+function responder(valor, rotulo) {
+  adicionar("user", escapar(rotulo));
+  salvas.push(valor); salvar();
+  answers.innerHTML = "";
+  return valor;
+}
+
+function botoes(opcoes, grade) {
+  if (replay.length) {
+    const v = replay.shift();
+    const op = opcoes.find((o) => o.valor === v);
+    if (op) { adicionar("user", escapar(op.label)); salvas.push(v); return Promise.resolve(v); }
+    replay = [];
+  }
+  return new Promise((resolve) => {
+    const box = document.createElement("div");
+    box.className = "options" + (grade ? " grid2" : "");
+    box.setAttribute("role", "group"); box.setAttribute("aria-label", "Respostas");
+    opcoes.forEach((op, i) => {
+      const b = document.createElement("button"); b.type = "button"; b.className = "option"; b.textContent = op.label;
+      b.style.animationDelay = (i * 40) + "ms";
+      b.addEventListener("click", () => resolve(responder(op.valor, op.label)));
+      box.appendChild(b);
+    });
+    answers.innerHTML = ""; answers.appendChild(box); rolar();
+  });
+}
+
+function texto(placeholder, max) {
+  if (replay.length) {
+    const v = replay.shift();
+    if (typeof v === "string" && v) { adicionar("user", escapar(v)); salvas.push(v); return Promise.resolve(v); }
+    replay = [];
+  }
+  return new Promise((resolve) => {
+    const form = document.createElement("form"); form.className = "field"; form.autocomplete = "off";
+    form.innerHTML = '<textarea rows="1" maxlength="' + max + '" aria-label="Sua resposta"></textarea><button class="send" type="submit" aria-label="Enviar" disabled><span class="ms">arrow_upward</span></button>';
+    const campo = form.querySelector("textarea"), enviar = form.querySelector(".send");
+    campo.placeholder = placeholder;
+    campo.addEventListener("input", () => { campo.style.height = "auto"; campo.style.height = Math.min(campo.scrollHeight, 120) + "px"; enviar.disabled = !campo.value.trim(); });
+    campo.addEventListener("keydown", (e) => { if (e.key === "Enter" && !e.shiftKey && matchMedia("(hover: hover)").matches) { e.preventDefault(); form.requestSubmit(); } });
+    form.addEventListener("submit", (e) => { e.preventDefault(); const v = limpar(campo.value, max); if (v) resolve(responder(v, v)); });
+    answers.innerHTML = ""; answers.appendChild(form); rolar();
+    if (matchMedia("(hover: hover)").matches) campo.focus();
+  });
+}
+
+function email() {
+  if (replay.length) {
+    const v = replay.shift();
+    if (typeof v === "string" && v.includes("@")) { adicionar("user", escapar(v)); salvas.push(v); return Promise.resolve({ valor: v, novo: false }); }
+    replay = [];
+  }
+  return new Promise((resolve) => {
+    const wrap = document.createElement("div");
+    wrap.innerHTML = '<form class="field" novalidate><input type="email" inputmode="email" autocomplete="email" autocapitalize="off" spellcheck="false" maxlength="120" placeholder="seuemail@exemplo.com" aria-label="Seu e-mail" aria-describedby="emailHint"><button class="send" type="submit" aria-label="Enviar" disabled><span class="ms">arrow_upward</span></button></form>' +
+      '<p class="hint" id="emailHint">Ao enviar, você aceita receber mensagens do Luka. Dá pra sair quando quiser. Veja a <a href="' + LINK_PRIVACIDADE + '" target="_blank" rel="noopener">política de privacidade</a>.</p>';
+    const form = wrap.querySelector("form"), campo = form.querySelector("input"), enviar = form.querySelector(".send"), hint = wrap.querySelector(".hint");
+    const original = hint.innerHTML;
+    campo.addEventListener("input", () => { enviar.disabled = !campo.value.trim(); form.classList.remove("error"); hint.classList.remove("err"); hint.innerHTML = original; });
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const v = campo.value.trim().toLowerCase();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) {
+        form.classList.add("error"); hint.classList.add("err"); hint.textContent = "Acho que faltou alguma coisa nesse e-mail. Confere pra mim?";
+        campo.setAttribute("aria-invalid", "true"); campo.focus(); return;
+      }
+      resolve({ valor: responder(v, v), novo: true });
+    });
+    answers.innerHTML = ""; answers.appendChild(wrap); rolar();
+    if (matchMedia("(hover: hover)").matches) campo.focus();
+  });
+}
+
+function enviarContato(dados) {
+  if (window.fbq) fbq("track", "Lead", { content_name: "Diagnóstico dos Sabotadores" });
+  if (!ENVIO_EMAIL) return;
+  try {
+    fetch(ENVIO_EMAIL, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(dados), keepalive: true }).catch(() => {});
+  } catch (e) {}
+}
+
+function cartaHTML(s, habito) {
+  const n = s.estrutura ? "" : "Sabotador " + (LETRAS.indexOf(s.letra) + 1);
+  return '<article class="lkcard" aria-label="O seu resultado">' +
+    '<div class="top lk-dark"><span class="kicker">' + (s.estrutura ? "O seu resultado" : n) + '</span>' + s.icone +
+    '<div class="stroke"></div><h2 class="name">' + escapar(s.nome.replace(/^O /, '')) + '</h2>' +
+    '<p class="lie">' + escapar(s.mentira) + '</p></div>' +
+    '<div class="light lk-light"><div class="metas"><div><b>' + escapar(s.chave.replace(/^\d+\s*·\s*/, '')) + '</b>Código-chave</div><div><b>' + escapar(s.rota) + '</b>Rota</div><div><b>' + escapar(s.vira.replace(/^O /, '')) + '</b>' + (s.estrutura ? "Rodando, vira" : "Desarmado, vira") + '</div></div>' +
+    '<div class="body"><span class="label">O seu resultado</span>' +
+    '<p><b>Hábito:</b> ' + escapar(habito) + '</p>' +
+    '<p>' + (s.estrutura ? "A rota é a ordem dos 3 Códigos que montam a sua estrutura, em 8 semanas." : "A rota é a ordem dos 3 Códigos que desarmam o seu Sabotador, em 8 semanas.") + '</p></div>' +
+    '<div class="foot"><span>Diagnóstico dos Sabotadores</span><b>@lukanero</b></div></div></article>';
+}
+
+/* ---------- O roteiro (seções 4 a 8 da copy) ---------- */
+async function conversa() {
+
+  // Situação
+  await diz("Aqui é o Luka. Que bom que veio.\n\nVou perguntar das suas últimas semanas, não de quem você gostaria de ser.\n\nPra começar: qual hábito você vem tentando e não consegue sustentar?");
+  const habito = await texto("Ex.: treinar, estudar, ler", 60);
+
+  await diz("Fechou. Esse vai ser o nosso hábito daqui pra frente.\n\nQuantas vezes você já começou e largou esse hábito?");
+  const vezes = VEZES[await botoes(VEZES.map((o, i) => ({ label: o.label, valor: i })), true)];
+
+  await diz("E quando costuma parar?");
+  const parada = PARADA[await botoes(PARADA.map((o, i) => ({ label: o.label, valor: i })), true)];
+
+  // Problema: as cenas
+  await diz(PASSAGEM);
+  const escolhas = [], vistos = {};
+  const hCurto = habitoCurto(habito);
+  for (let c = 0; c < CENAS.length; c++) {
+    const cena = CENAS[c];
+    let p = hCurto && cena.comHabito ? cena.comHabito.replace("{h}", hCurto) : cena.texto;
+    if (c === 4) p = "Metade já foi.\n\n" + p;
+    else if (c === CENAS.length - 1) p = "Última cena.\n\n" + p;
+    await diz(p);
+    const i = await botoes(cena.opcoes.map((o, k) => ({ label: o[1], valor: k })));
+    const letra = cena.opcoes[i][0];
+    escolhas.push(letra);
+    vistos[letra] = (vistos[letra] || 0) + 1;
+    const vez = vistos[letra];
+    await diz(vez === 1 ? cena.opcoes[i][2] : vez <= 3 ? PADRAO[letra][vez - 2] : PADRAO_MAIS);
+  }
+  const largada = LARGADA[escolhas[0]] || "começa do jeito que dá";
+
+  await diz(CIRCUNSTANCIA);
+  const circunstancia = await botoes([{ label: "Sim, tem", valor: 1 }, { label: "Não", valor: 0 }], true);
+
+  await diz("Tô quase fechando. Pensa no momento exato em que você trava.\n\nQual destas mais parece com o que passa na sua cabeça?");
+  const frase = await botoes(FRASES.map(([b, t]) => ({ label: t, valor: b })));
+
+  const r = calcular(escolhas, frase);
+
+  // Contato
+  await diz("Pronto. Já sei o que te trava.\n\nAntes de te mostrar: qual é o seu melhor e-mail? É por onde eu te mando, de vez em quando, coisa útil sobre hábito.");
+  const contato = await email();
+
+  // Implicação: o Sabotador e a confirmação
+  let sab = r.primario;
+  if (r.empate) {
+    await diz("Mais de um padrão apareceu com a mesma força em você. Qual destas frases descreve melhor o que te trava agora?");
+    sab = await botoes(r.empate.map((b) => ({ label: SAB[b].mentira, valor: b })));
+  }
+  const apresentar = async (b, abertura) => {
+    const s = SAB[b];
+    let t = abertura + "\n\n### " + s.nome + "\n> " + s.mentira + "\n\n" + s.pega;
+    if (!s.estrutura) t += " No seu caso, com **" + habito + "**, ele aparece " + parada.txt + ".";
+    t += "\n\n**Isso soa como você?**";
+    await diz(t);
+    return botoes([{ label: "Sim, sou eu", valor: "sim" }, { label: "Mais ou menos", valor: "meio" }, { label: "Não muito", valor: "nao" }]);
+  };
+  const resp = await apresentar(sab, sab === "R" ? "Deixa eu ser honesto: no seu caso, nenhum Sabotador domina." : "Deixa eu ser honesto: o que te trava tem nome.");
+  if (resp !== "sim") {
+    const b2 = sab === "R" ? r.ordem[0] : r.segundo;
+    if (resp === "meio" && b2 !== sab) {
+      await diz("Justo. Às vezes ele divide espaço com outro. O segundo que mais apareceu em você foi " + SAB[b2].nome + ":\n\n> " + SAB[b2].mentira + "\n\nQual dos dois parece mais com você?");
+      sab = await botoes([sab, b2].map((b) => ({ label: SAB[b].nome, valor: b })), true);
+    } else if (b2 !== sab) {
+      const resp2 = await apresentar(b2, "Tudo bem. O segundo padrão que mais apareceu nas suas respostas foi outro.");
+      if (resp2 === "nao") {
+        await diz("Sem problema. Me diz então: qual destas frases mais parece com o que te trava?");
+        sab = await botoes(LETRAS.map((b) => ({ label: SAB[b].mentira, valor: b })).concat([{ label: "Nenhuma delas", valor: "R" }]));
+      } else sab = b2;
+    }
+  }
+  const s = SAB[sab];
+  if (contato.novo) enviarContato({ email: contato.valor, sabotador: s.nome, segundo: SAB[r.segundo].nome, habito: habito, rota: s.rota, origem: new URLSearchParams(location.search).get("utm_source") || "", data: new Date().toISOString() });
+
+  // O custo
+  let t2 = (s.estrutura ? "Agora você sabe por onde começar. E o que tem nome tem conserto." : "Agora ele tem nome. E o que tem nome se desarma.") +
+    "\n\n" + s.protege + " " + s.naoE + "\n\n" + s.luka +
+    (s.estrutura
+      ? "\n\nEnquanto a estrutura não muda, o hábito para no mesmo ponto: " + parada.txt + ". Foi assim " + vezes.foi + "."
+      : "\n\nEnquanto ele não for desarmado, ele volta no mesmo ponto: " + parada.txt + ". Foi assim " + vezes.foi + ".");
+  await diz(t2);
+  if (circunstancia) await diz("E uma coisa importante: você contou que tem algo grande tomando o seu tempo agora. Isso é circunstância, não falha de caráter. Se for o caso, comece ainda menor, ou faça uma pausa com data pra voltar.");
+  if (sab === "D") await diz("Uma coisa importante: se a autocrítica vem junto com um desânimo que não passa, vale procurar também um profissional de saúde mental. E se surgirem pensamentos de se machucar, liga pro CVV, no 188. Eles atendem 24 horas.");
+
+  // O resultado, em carta
+  adicionar("luka", cartaHTML(s, habito), "wide");
+
+  // Necessidade de solução
+  await diz("**Se esse hábito rodasse sozinho, sem depender de motivação, o que mudaria pra você?**");
+  const mudaria = await texto("Escreve o que mudaria", 220);
+
+  const oferta = [
+    "“" + mudaria + "”. Isso é possível, e não depende de você virar outra pessoa.",
+    "Você já tentou " + vezes.curto + ". Vontade não faltou: você " + largada + ".",
+    "O que faltou foi um sistema feito " + s.pro + ". Sem ele, toda largada termina no mesmo ponto: " + parada.txt + ".",
+    "**Os Códigos da Disciplina** é o meu curso, e ele existe pra isso. Lá você recebe a rota completa " + s.do + " e aplica cada Código no seu hábito, **" + habito + "**.",
+    "A gente começa com uma versão mínima de 2 minutos. A cada duas semanas, entra uma camada nova. Em 8 semanas, você monta o sistema que segura esse hábito nos dias sem vontade.",
+    "E o que você fez aqui foi a versão simplificada. Logo no começo do curso, você faz o diagnóstico completo, com o seu plano B.",
+    "A parte mais difícil você já fez: agora você sabe o que te trava. O próximo passo tá aqui:",
+  ];
+  for (const p of oferta) await diz(p);
+  adicionar("luka", '<a class="btn" href="' + escapar(LINK_PAGINA) + '">' + (s.estrutura ? "Quero montar a minha estrutura" : "Quero desarmar o meu Sabotador") + ' <span class="ms" aria-hidden="true">arrow_forward</span></a>', "cta");
+  answers.innerHTML = "";
+}
+
+function habitoCurto(h) {
+  const t = h.trim().replace(/[.!?]+$/, "");
+  if (t.split(/\s+/).length > 4) return null;
+  return t === t.toUpperCase() ? t : t.charAt(0).toLowerCase() + t.slice(1);
+}
+
+/* Para testar do zero: abra a página com ?novo no fim do endereço. */
+if (/[?&]novo\b/.test(location.search)) {
+  try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
+  history.replaceState(null, "", location.pathname);
+}
+replay = carregar();
+conversa().catch((e) => console.error(e));
+</script>
+</body>
+</html>
