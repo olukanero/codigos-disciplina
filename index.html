@@ -664,13 +664,21 @@
   <p class="cta-meta">R$ 197 · 7 dias de garantia</p>
 </div>
 
-<!-- Meta Pixel: só dispara no domínio publicado, para os testes locais não contarem -->
+<!-- Meta Pixel: só dispara no domínio publicado, para os testes locais não contarem. O script do Facebook carrega depois da página abrir. -->
 <script>
 (function () {
   if (!/(^|\.)lukanero\.com\.br$/.test(location.hostname)) return;
-  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  /* a fila do fbq existe desde já: PageView e cliques ficam guardados e são enviados quando o script do Facebook chegar */
+  !function(f){if(f.fbq)return;var n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[]}(window);
   fbq('init', '2618686061904510');
   fbq('track', 'PageView');
+  /* o script do Facebook (pesado) só entra depois que a página terminou de abrir */
+  function carregar() {
+    var t = document.createElement('script'); t.async = true; t.src = 'https://connect.facebook.net/en_US/fbevents.js';
+    document.head.appendChild(t);
+  }
+  function depois() { 'requestIdleCallback' in window ? requestIdleCallback(carregar, { timeout: 2000 }) : setTimeout(carregar, 1); }
+  document.readyState === 'complete' ? depois() : addEventListener('load', depois);
 })();
 </script>
 
