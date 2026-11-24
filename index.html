@@ -215,6 +215,7 @@
   .bonuses { display: grid; gap: var(--lk-card-gap); }
   @media (min-width: 840px) { .bonuses { grid-template-columns: repeat(3, 1fr); } }
   .bonus { display: flex; flex-direction: column; gap: var(--lk-space-2); background: var(--lk-surface-container); border-radius: var(--lk-card-radius); padding: var(--lk-space-3) var(--lk-space-3) var(--lk-card-padding); }
+  .bonus:not(:has(.img-slot)) { padding-top: var(--lk-card-padding); }
   .bonus .img-slot { border-radius: var(--lk-radius-md); margin-bottom: var(--lk-space-3); }
   .bonus .img-slot::before { border-radius: var(--lk-radius-xs); }
   .bonus .kicker, .bonus h3, .bonus p { padding: 0 calc(var(--lk-card-padding) - var(--lk-space-3)); }
@@ -510,22 +511,22 @@
     </div>
     <div class="bonuses">
       <article class="bonus">
-        <!-- IMAGEM: mockup do Bônus 1, 4:3 (800 × 600) -->
-        <figure class="img-slot r-4-3"><span class="ms">image</span><b>Mockup · Bônus 1</b><span>4:3</span><img src="img/bonus-1.webp" alt="Bônus 1" width="800" height="600" loading="lazy" onload="this.closest('.img-slot').classList.add('tem-foto')" onerror="this.remove()"></figure>
+        <!-- IMAGEM ESCONDIDA até a imagem ficar pronta: mockup do Bônus 1, 4:3 (800 × 600). Para mostrar, tire o comentário da linha abaixo. -->
+        <!-- <figure class="img-slot r-4-3"><span class="ms">image</span><b>Mockup · Bônus 1</b><span>4:3</span><img src="img/bonus-1.webp" alt="Bônus 1" width="800" height="600" loading="lazy" onload="this.closest('.img-slot').classList.add('tem-foto')" onerror="this.remove()"></figure> -->
         <span class="kicker">Bônus 1</span>
         <h3>Execute em 3 Minutos</h3>
         <p>Aulas curtas e um workbook, cada aula com um exercício de 3 minutos: comece hoje, faça amanhã acontecer sozinho e volte depois de uma queda.</p>
       </article>
       <article class="bonus">
-        <!-- IMAGEM: mockup do Bônus 2, 4:3 (800 × 600) -->
-        <figure class="img-slot r-4-3"><span class="ms">image</span><b>Mockup · Bônus 2</b><span>4:3</span><img src="img/bonus-2.webp" alt="Bônus 2" width="800" height="600" loading="lazy" onload="this.closest('.img-slot').classList.add('tem-foto')" onerror="this.remove()"></figure>
+        <!-- IMAGEM ESCONDIDA até a imagem ficar pronta: mockup do Bônus 2, 4:3 (800 × 600). Para mostrar, tire o comentário da linha abaixo. -->
+        <!-- <figure class="img-slot r-4-3"><span class="ms">image</span><b>Mockup · Bônus 2</b><span>4:3</span><img src="img/bonus-2.webp" alt="Bônus 2" width="800" height="600" loading="lazy" onload="this.closest('.img-slot').classList.add('tem-foto')" onerror="this.remove()"></figure> -->
         <span class="kicker">Bônus 2</span>
         <h3>Baralho da Disciplina</h3>
         <p>21 cartas com os 7 Sabotadores, a Rota da Estrutura e os 12 Códigos: a mentira e a rota de cada Sabotador, a pergunta e a ação de hoje de cada Código.</p>
       </article>
       <article class="bonus">
-        <!-- IMAGEM: mockup do Bônus 3, 4:3 (800 × 600) -->
-        <figure class="img-slot r-4-3"><span class="ms">image</span><b>Mockup · Bônus 3</b><span>4:3</span><img src="img/bonus-3.webp" alt="Bônus 3" width="800" height="600" loading="lazy" onload="this.closest('.img-slot').classList.add('tem-foto')" onerror="this.remove()"></figure>
+        <!-- IMAGEM ESCONDIDA até a imagem ficar pronta: mockup do Bônus 3, 4:3 (800 × 600). Para mostrar, tire o comentário da linha abaixo. -->
+        <!-- <figure class="img-slot r-4-3"><span class="ms">image</span><b>Mockup · Bônus 3</b><span>4:3</span><img src="img/bonus-3.webp" alt="Bônus 3" width="800" height="600" loading="lazy" onload="this.closest('.img-slot').classList.add('tem-foto')" onerror="this.remove()"></figure> -->
         <span class="kicker">Bônus 3</span>
         <h3>Roda dos Códigos</h3>
         <p>O canvas com os 12 Códigos em círculo, para preencher com o seu Sabotador, a sua rota e as suas respostas, deixar à vista e saber onde o seu hábito está.</p>
@@ -539,8 +540,8 @@
 <section class="section" id="oferta" aria-labelledby="t-oferta">
   <div class="wrap">
     <div class="offer">
-      <!-- IMAGEM: mockup do produto completo (curso, workbook, manuais, bônus), 16:9 (1120 × 630) -->
-      <figure class="img-slot r-16-9"><span class="ms">image</span><b>Mockup do produto</b><span>curso, workbook, manuais e bônus · 16:9</span><img src="img/produto.webp" alt="Os Códigos da Disciplina: curso, workbook, manuais e bônus" width="1120" height="630" loading="lazy" onload="this.closest('.img-slot').classList.add('tem-foto')" onerror="this.remove()"></figure>
+      <!-- IMAGEM ESCONDIDA até a imagem ficar pronta: mockup do produto completo (curso, workbook, manuais, bônus), 16:9 (1120 × 630). Para mostrar, tire o comentário da linha abaixo. -->
+      <!-- <figure class="img-slot r-16-9"><span class="ms">image</span><b>Mockup do produto</b><span>curso, workbook, manuais e bônus · 16:9</span><img src="img/produto.webp" alt="Os Códigos da Disciplina: curso, workbook, manuais e bônus" width="1120" height="630" loading="lazy" onload="this.closest('.img-slot').classList.add('tem-foto')" onerror="this.remove()"></figure> -->
       <div class="offer-body">
         <h2 id="t-oferta">Os Códigos da Disciplina + 3 bônus</h2>
         <ul class="offer-list">
