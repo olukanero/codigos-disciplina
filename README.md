@@ -23,6 +23,8 @@ sitemap.xml           as páginas públicas, para o Google
 
 Ficam na pasta `img/`, com o nome exato. Enquanto uma imagem não existe, a página mostra uma caixa cinza com a medida no lugar dela.
 
+O `_headers` guarda as imagens em cache por 1 dia. Ao trocar uma foto mantendo o nome, ela pode levar até 1 dia para aparecer para todo mundo. Para aparecer na hora: Cloudflare → lukanero.com.br → Caching → Configuration → Purge Everything.
+
 | Arquivo | Onde aparece | Medida | Peso máximo |
 |---|---|---|---|
 | `hero-desktop.webp` | Fundo do topo, no computador | 1920 × 1080 | 200 KB |
